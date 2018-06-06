@@ -1,5 +1,5 @@
 .landing {
-  background-image: url(../images/landing1.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.747), rgba(109, 109, 109, 0.486)), url(../images/landing1.jpg);
   height: 100vh;
   background-size: cover;
   background-position: center; }
@@ -8,19 +8,36 @@
     display: flex;
     flex-direction: column;
     padding-right: 10rem;
+    padding-top: 6rem;
     font-family: "Courier New", Courier, monospace;
     align-items: flex-end; }
     .landing__text--title {
       font-size: 3rem;
       font-weight: 900; }
+    .landing__text--info {
+      width: 25rem;
+      font-weight: 700;
+      line-height: 2rem; }
+    .landing__text--login {
+      background-color: white;
+      border-radius: 2rem;
+      text-decoration: none;
+      color: #4d4d4d;
+      margin-right: 10rem;
+      padding: 10px; }
+      .landing__text--login:hover {
+        background-color: #555555;
+        color: white;
+        text-decoration: none; }
 
-.navbar .navbar-brand {
-  font-size: 2rem;
-  font-weight: 500; }
-
-.navbar .nav-link {
-  font-size: 1.25rem;
-  color: white; }
+.navbar {
+  font-family: "Courier New", Courier, monospace; }
+  .navbar .navbar-brand {
+    font-size: 2rem;
+    font-weight: 500; }
+  .navbar .nav-link {
+    font-size: 1.25rem;
+    color: white; }
 
 html, body {
   height: 100%; }

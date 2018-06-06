@@ -1,5 +1,8 @@
 .landing{
-    background-image: url(../images/landing1.jpg);
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.747), 
+        rgba(109, 109, 109, 0.486)
+      ), url(../images/landing1.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -8,8 +11,8 @@
         color: white;
         display: flex;
         flex-direction: column;
-        //border: 1px solid white;
         padding-right: 10rem;
+        padding-top: 6rem;
         font-family: "Courier New", Courier, monospace;
         align-items: flex-end;
 
@@ -19,7 +22,26 @@
         }
 
         &--info{
-            
+            width: 25rem;
+            font-weight: 700;
+            line-height: 2rem;
+        }       
+
+        &--login{
+            background-color: white;
+            border-radius: 2rem;
+            text-decoration: none;
+            color: rgb(77, 77, 77);
+            margin-right: 10rem;
+            padding: 10px;
+
+            &:hover{
+                background-color: rgb(85, 85, 85);
+                color: white;
+                text-decoration: none;
+            }
         }
     }
+
+   
 }
