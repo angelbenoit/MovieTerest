@@ -1,0 +1,25 @@
+.landing{
+    background-image: url(../images/landing1.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
+    &__text{
+        color: white;
+        display: flex;
+        flex-direction: column;
+        //border: 1px solid white;
+        padding-right: 10rem;
+        font-family: "Courier New", Courier, monospace;
+        align-items: flex-end;
+
+        &--title{
+            font-size: 3rem;
+            font-weight: 900;
+        }
+
+        &--info{
+            
+        }
+    }
+}
