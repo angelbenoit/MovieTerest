@@ -10,14 +10,17 @@ class Navbar extends Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav ml-auto">
-                        <a className="nav-item nav-link active" href="#">
-                            <i class="fas fa-home"></i> Home <span className="sr-only">(current)</span>
+                        <a className="nav-item nav-link active" href="/">
+                            <i className="fas fa-home"></i> Home <span className="sr-only">(current)</span>
                         </a>
                         <a className="nav-item nav-link" href="#">
-                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                            <i className="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                         <a className="nav-item nav-link" href="#">
-                        <i class="fas fa-film"></i> Search
+                            <i className="fas fa-film"></i> Search
+                        </a>
+                        <a className="nav-item nav-link" href="/api/logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
                         </a>
                     </div>
                 </div>

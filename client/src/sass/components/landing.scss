@@ -16,15 +16,28 @@
         font-family: "Courier New", Courier, monospace;
         align-items: flex-end;
 
+        @media only screen and (max-width: 700px) {
+            padding-right: 0;
+            align-items: center;
+        }
+
         &--title{
             font-size: 3rem;
             font-weight: 900;
+
+            @media only screen and (max-width: 700px) {
+                font-size: 2rem;
+            }
         }
 
         &--info{
             width: 25rem;
             font-weight: 700;
             line-height: 2rem;
+
+            @media only screen and (max-width: 700px) {
+                width: 15rem;
+            }
         }       
 
         &--login{
@@ -34,6 +47,11 @@
             color: rgb(77, 77, 77);
             margin-right: 10rem;
             padding: 10px;
+
+            @media only screen and (max-width: 700px) {
+                margin-right: 0rem;
+                align-self: center;
+            }
 
             &:hover{
                 background-color: rgb(85, 85, 85);
