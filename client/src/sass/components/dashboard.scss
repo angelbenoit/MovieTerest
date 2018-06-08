@@ -1,0 +1,48 @@
+.dashboard{
+    height: 100vh;
+    background-color: #001A40;
+    color: white;
+
+    &__content{
+        display: flex;
+
+        &--navigation{
+            border: 1px solid white;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            width: 30%;
+
+            .greeting{
+                font-size: 2rem;
+            }
+
+           .side-nav{
+                display: flex;
+                flex-direction: column;  
+                border-radius: 1rem;    
+                background-color: grey;                  
+
+                &__link{
+                    color: white;                 
+                    padding: 2rem;
+                    width: 100%;
+
+                    &:hover{
+                        background-color: green;
+                        border-radius: 1rem; 
+                    }
+                }
+           }
+        }
+
+        &--display{
+            border: 2px solid yellow;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            width: 70%;
+        }
+    }
+
+}

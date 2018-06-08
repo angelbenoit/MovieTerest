@@ -13,7 +13,7 @@ class Navbar extends Component {
                         <a className="nav-item nav-link active" href="/">
                             <i className="fas fa-home"></i> Home <span className="sr-only">(current)</span>
                         </a>
-                        <a className="nav-item nav-link" href="#">
+                        <a className="nav-item nav-link" href="/dashboard">
                             <i className="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                         <a className="nav-item nav-link" href="#">

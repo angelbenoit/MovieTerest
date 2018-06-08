@@ -1,3 +1,36 @@
+.dashboard {
+  height: 100vh;
+  background-color: #001A40;
+  color: white; }
+  .dashboard__content {
+    display: flex; }
+    .dashboard__content--navigation {
+      border: 1px solid white;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      width: 30%; }
+      .dashboard__content--navigation .greeting {
+        font-size: 2rem; }
+      .dashboard__content--navigation .side-nav {
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        background-color: grey; }
+        .dashboard__content--navigation .side-nav__link {
+          color: white;
+          padding: 2rem;
+          width: 100%; }
+          .dashboard__content--navigation .side-nav__link:hover {
+            background-color: green;
+            border-radius: 1rem; }
+    .dashboard__content--display {
+      border: 2px solid yellow;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      width: 70%; }
+
 .landing {
   background: linear-gradient(rgba(0, 0, 0, 0.747), rgba(109, 109, 109, 0.486)), url(../images/landing1.jpg);
   height: 100vh;
@@ -40,7 +73,8 @@
           margin-right: 0rem;
           align-self: center; } }
       .landing__text--login:hover {
-        background-color: #555555;
+        background-color: transparent;
+        border: 2px solid white;
         color: white;
         text-decoration: none; }
 
