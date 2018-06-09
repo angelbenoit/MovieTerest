@@ -31,19 +31,23 @@ class Dashboard extends Component {
                         </div>
 
                         <nav className="side-nav">
-                            <a className="side-nav__link" href="/"><i class="fas fa-trophy"></i>Top Five</a>
-                            <a className="side-nav__link" href="/"><i class="fab fa-bitbucket"></i>Bucket List</a>
-                            <a className="side-nav__link" href="/"><i class="fas fa-film"></i>Movies Only</a>
-                            <a className="side-nav__link" href="/"><i class="fas fa-tv"></i> TV Shows Only</a>
+                            <a className="side-nav__link" href="/"><i class="fas fa-trophy"></i>&nbsp; Top Five</a>
+                            <a className="side-nav__link" href="/"><i class="fab fa-bitbucket"></i>&nbsp; Bucket List</a>
+                            <a className="side-nav__link" href="/"><i class="fas fa-film"></i>&nbsp; Movies Only</a>
+                            <a className="side-nav__link" href="/"><i class="fas fa-tv"></i>&nbsp; TV Shows Only</a>
                         </nav>
                     </div>
 
                     <div className="dashboard__content--display">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt temporibus dicta dolor odio, corporis nostrum ipsum aut. Dolore, mollitia! Repellendus, animi! Corrupti qui pariatur quae nihil dolor quia inventore dignissimos.
-                        Quis necessitatibus nostrum rerum, odio enim temporibus laborum aliquid ex sit esse nobis asperiores dolorem, sunt delectus earum assumenda nemo, exercitationem quibusdam? Atque rem voluptatum deserunt quae mollitia, optio maiores.
-                        Tempora veritatis beatae odio enim, ipsa modi nobis dolore consequuntur. Sequi animi laborum iure temporibus consequuntur inventore reiciendis. Provident in est voluptatum saepe quasi dignissimos, nihil asperiores omnis sint reprehenderit!
-                        Natus voluptatibus nihil cum itaque provident tempore harum repellendus. Sit nobis qui eligendi et harum ex quisquam praesentium ea in quod! Repellat labore ad dolore nemo qui voluptate quisquam! Vitae.
-                        Dicta quia esse vitae quae illum dolorem explicabo excepturi libero optio sit at nam consectetur perspiciatis, magnam pariatur est nemo, exercitationem iusto adipisci, laborum voluptatibus eveniet placeat. Deserunt, aut alias?</p>
+                        <div className="userListContainer">
+                            <ul className="userListContainer__list">
+                                <li className="item">One</li>
+                                <li className="item">Two</li>
+                                <li className="item">Three</li>
+                                <li className="item">Four</li>
+                                <li className="item">Five</li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>

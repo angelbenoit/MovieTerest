@@ -1,7 +1,8 @@
 .dashboard{
-    height: 100vh;
-    background-color: #001A40;
+    min-height: 100vh;
+    background-color: rgb(14, 59, 126);
     color: white;
+    font-family: "Courier New", Courier, monospace;
 
     &__content{
         display: flex;
@@ -13,24 +14,26 @@
             padding: 2rem;
             width: 30%;
 
+
+
             .greeting{
                 font-size: 2rem;
             }
 
            .side-nav{
                 display: flex;
-                flex-direction: column;  
-                border-radius: 1rem;    
-                background-color: grey;                  
-
+                flex-direction: column;
+                border-radius: 5px;
+                background-color: rgb(26, 74, 145);
+                box-shadow: 4px 5px 3px #1c1a8b;
                 &__link{
-                    color: white;                 
+                    color: white;
                     padding: 2rem;
                     width: 100%;
 
                     &:hover{
-                        background-color: green;
-                        border-radius: 1rem; 
+                        background-color: rgba(255, 255, 255, 0.459);
+                        border-radius: 5px;
                     }
                 }
            }
@@ -42,6 +45,13 @@
             flex-direction: column;
             padding: 2rem;
             width: 70%;
+            background: linear-gradient(
+                        rgba(77, 135, 223, 0.63),
+                        rgba(22, 58, 105, 0.582)
+                        ),
+                        url(../images/tvpicture.jpeg);
+            background-size: cover;
+            background-position: left;
         }
     }
 
