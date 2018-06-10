@@ -41,11 +41,7 @@ class Dashboard extends Component {
                     <div className="dashboard__content--display">
                         <div className="userListContainer">
                             <ul className="userListContainer__list">
-                                <li className="item">One</li>
-                                <li className="item">Two</li>
-                                <li className="item">Three</li>
-                                <li className="item">Four</li>
-                                <li className="item">Five</li>
+
                             </ul>
                         </div>
                     </div>

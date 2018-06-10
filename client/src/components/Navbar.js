@@ -16,7 +16,7 @@ class Navbar extends Component {
                         <a className="nav-item nav-link" href="/dashboard">
                             <i className="fas fa-tachometer-alt"></i> Dashboard
                         </a>
-                        <a className="nav-item nav-link" href="#">
+                        <a className="nav-item nav-link" href="/search">
                             <i className="fas fa-film"></i> Search
                         </a>
                         <a className="nav-item nav-link" href="/api/logout">

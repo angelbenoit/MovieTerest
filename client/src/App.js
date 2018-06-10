@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
+import Search from './components/Search';
 import Login from './components/login';
 import Profile from './components/profile';
 import Navbar from './components/Navbar';
@@ -22,7 +23,7 @@ class App extends Component {
           <div>
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/profile' component={Profile} />
+            <Route exact path='/search' component={Search} />
           </div>
         </BrowserRouter>
       </div>
