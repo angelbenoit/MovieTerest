@@ -92,6 +92,14 @@
     font-size: 1.25rem;
     color: white; }
 
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5rem; }
+  .movieList .movie {
+    padding: 2rem;
+    border: 1px solid green; }
+
 html, body {
   height: 100%; }
 

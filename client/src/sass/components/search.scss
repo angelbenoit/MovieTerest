@@ -1,0 +1,10 @@
+.movieList{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5rem;
+
+    .movie{
+        padding: 2rem;
+        border: 1px solid green;
+    }
+}
