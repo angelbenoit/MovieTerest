@@ -23,11 +23,10 @@ class Search extends Component {
         axios(url)
             .then(res => {
                 res.data.results.forEach(movie => {
-                    let imageLink = `https://image.tmdb.org/t/p/w200${movie.poster_path}`; //link to the poster image
+                    let imageLink = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; //link to the poster image
                     let HTMLMovie = (
                         <div className="movie">
-                            <p>{movie.title}</p>
-                            <img src={imageLink} alt=""/>
+                            <img className="movie__img" src={imageLink} alt="" />
                         </div>
                     );
                     const joined = this.state.display.concat(HTMLMovie); //concat the state array with new list of movies

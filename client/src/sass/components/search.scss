@@ -4,7 +4,13 @@
     padding: 5rem;
 
     .movie{
-        padding: 2rem;
-        border: 1px solid green;
+        background: rgb(255, 21, 21);
+        &__img{
+            opacity: 0.7;
+            cursor: pointer;
+            &:hover{
+                opacity: 1;
+            }
+        }
     }
 }
