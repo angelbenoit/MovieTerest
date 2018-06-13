@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DiscoverMovieModal from './DiscoverMovieModal';
 
 class Search extends Component {
     constructor(props) {
@@ -8,10 +9,14 @@ class Search extends Component {
         this.state = {
             page: 1,
             maxPage: 1000,
-            display: []
+            display: [],
+            isOpen: false,
+            movieData: {}
         }
         this.getMovieDiscoverData = this.getMovieDiscoverData.bind(this);
         this.loadMoreDiscoverData = this.loadMoreDiscoverData.bind(this);
+        this.renderModal = this.renderModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentWillMount() {
@@ -26,7 +31,7 @@ class Search extends Component {
                     let imageLink = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; //link to the poster image
                     let HTMLMovie = (
                         <div className="movie">
-                            <img className="movie__img" src={imageLink} alt="" />
+                            <img onClick={() => this.renderModal(movie)} className="movie__img" src={imageLink} alt="" />
                         </div>
                     );
                     const joined = this.state.display.concat(HTMLMovie); //concat the state array with new list of movies
@@ -40,20 +45,30 @@ class Search extends Component {
             this.setState(prevState => {
                 return { page: prevState.page + 1 }
             }, () => this.getMovieDiscoverData()); // call getMovieDiscoverData to get next page of data
-
-
         }
     }
 
+    renderModal(movie){
+        this.setState({ isOpen: true, movieData: movie }, console.log("RENDER"));
+    }
+
+    closeModal(){
+        this.setState({ isOpen: false })
+    }
 
     render() {
         return (
             <div>
                 <h1>TEST</h1>
+                <h2>{this.state.isOpen.toString()}</h2>
                 <div className="movieList">
                     {this.state.display}
                 </div>
-
+                <DiscoverMovieModal
+                    isOpen={this.state.isOpen}
+                    closeModal={this.closeModal}
+                    movieData={this.state.movieData}
+                />
                 <button onClick={this.loadMoreDiscoverData}>Add more</button>
             </div>
         );
