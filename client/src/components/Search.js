@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DiscoverMovieModal from './DiscoverMovieModal';
+import Navbar from './Navbar';
 
 class Search extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            page: 1,
-            maxPage: 1000,
-            display: [],
-            isOpen: false,
-            movieData: {}
+            page: 1,          // initial page starts at 1
+            maxPage: 1000,   // The api allows a maximum of 1000 pages
+            display: [],    // The array of movies in html form
+            isOpen: false, // whether the modal is open
+            movieData: {} // movieData = data to be showed in modal when user clicks on poster image
         }
         this.getMovieDiscoverData = this.getMovieDiscoverData.bind(this);
         this.loadMoreDiscoverData = this.loadMoreDiscoverData.bind(this);
@@ -28,10 +29,11 @@ class Search extends Component {
         axios(url)
             .then(res => {
                 res.data.results.forEach(movie => {
-                    let imageLink = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; //link to the poster image
+                    let imageLink = `https://image.tmdb.org/t/p/w400${movie.poster_path}`; //link to the poster image
                     let HTMLMovie = (
                         <div className="movie">
                             <img onClick={() => this.renderModal(movie)} className="movie__img" src={imageLink} alt="" />
+                            {/* When User clicks on a movie poster, a modal will open with more info */}
                         </div>
                     );
                     const joined = this.state.display.concat(HTMLMovie); //concat the state array with new list of movies
@@ -50,17 +52,18 @@ class Search extends Component {
 
     renderModal(movie){
         this.setState({ isOpen: true, movieData: movie }, console.log("RENDER"));
+        //Allows modal to open and also passes data object from the GET request from getMovieDiscoverData()
     }
 
     closeModal(){
-        this.setState({ isOpen: false })
+        this.setState({ isOpen: false }); //closes modal
     }
 
     render() {
         return (
-            <div>
-                <h1>TEST</h1>
-                <h2>{this.state.isOpen.toString()}</h2>
+            <div className="search">
+                <Navbar/>
+                <h1>See the hottest movies</h1>
                 <div className="movieList">
                     {this.state.display}
                 </div>

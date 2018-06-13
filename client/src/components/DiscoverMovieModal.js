@@ -35,6 +35,7 @@ class DiscoverMovieModal extends React.Component {
   }
 
   render() {
+    const movie = this.props.movieData;
     return (
         <Modal
           isOpen={this.props.isOpen}
@@ -42,7 +43,10 @@ class DiscoverMovieModal extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-            <h1>{this.props.movieData.title}</h1>
+            <h1>{movie.title}</h1>
+            <p>Released on: {movie.release_date}</p>
+            <p>Rating: {movie.vote_average}</p>
+            <p>{movie.overview}</p>
         </Modal>
     );
   }

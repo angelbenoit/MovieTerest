@@ -1,10 +1,21 @@
+.search{
+    background-color: #0E3B7E;
+    font-family: "Courier New", Courier, monospace;
+
+    h1{
+        color: white;
+        text-align: center;
+        padding-top: 2rem;
+    }
+}
+
 .movieList{
     display: flex;
     flex-wrap: wrap;
     padding: 5rem;
 
     .movie{
-        background: rgb(255, 21, 21);
+        background: rgb(2, 103, 255);
         &__img{
             opacity: 0.7;
             cursor: pointer;
