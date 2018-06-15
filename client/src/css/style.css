@@ -1,3 +1,45 @@
+.search-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .search-buttons__group {
+    background-color: #134083;
+    border: none;
+    padding: 1rem;
+    color: white;
+    font-weight: 800;
+    font-size: 1.3rem;
+    border-bottom: 2px solid white; }
+    .search-buttons__group:nth-child(2) {
+      border-left: 2px solid white;
+      border-right: 2px solid white; }
+    @media only screen and (max-width: 600px) {
+      .search-buttons__group {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.15rem;
+        padding: .5rem;
+        width: 100%;
+        border: none; } }
+  .search-buttons__format {
+    margin-top: 1rem;
+    border: none;
+    background-color: #3B73C8;
+    font-size: 1.15rem;
+    padding: .5rem;
+    font-weight: 800;
+    color: white;
+    border-bottom: 2px solid white; }
+    .search-buttons__format:nth-child(2) {
+      border-left: 2px solid white; }
+    @media only screen and (max-width: 600px) {
+      .search-buttons__format {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        width: 100%;
+        border: none; } }
+
 .dashboard {
   min-height: 100vh;
   background-color: #0e3b7e;
@@ -35,12 +77,6 @@
       background: linear-gradient(rgba(77, 135, 223, 0.63), rgba(22, 58, 105, 0.582)), url(../images/tvpicture.jpeg);
       background-size: cover;
       background-position: left; }
-
-.showButton {
-  background-color: #0f31cc;
-  border: none;
-  color: white;
-  padding: 5px; }
 
 .landing {
   background: linear-gradient(rgba(0, 0, 0, 0.747), rgba(109, 109, 109, 0.486)), url(../images/landing1.jpg);
@@ -99,8 +135,9 @@
     color: white; }
 
 .search {
-  background-color: #0E3B7E;
-  font-family: "Courier New", Courier, monospace; }
+  background: linear-gradient(#123E81, #5c9dff);
+  font-family: "Courier New", Courier, monospace;
+  min-height: 100vh; }
   .search h1 {
     color: white;
     text-align: center;

@@ -16,7 +16,6 @@ class MostPopular extends Component {
 
         this.getMovieDiscoverData = this.getMovieDiscoverData.bind(this);
         this.closeModal = this.closeModal.bind(this);
-        this.loadMoreDiscoverData = this.loadMoreDiscoverData.bind(this);
     }
 
     componentWillMount() {
@@ -24,22 +23,22 @@ class MostPopular extends Component {
     }
 
     getMovieDiscoverData() {
-        let url = `https://api.themoviedb.org/3/discover/${this.props.searchTypeFormat}?api_key=508d690fdc412430a70ba8b4d841b0e0&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.state.page}`;
-        console.log(url);
-        axios(url)
-            .then(res => {
-                res.data.results.forEach(movie => {
-                    let imageLink = `https://image.tmdb.org/t/p/w400${movie.poster_path}`; //link to the poster image
-                    let HTMLMovie = (
-                        <div className="movie">
-                            <img onClick={() => this.renderModal(movie)} className="movie__img" src={imageLink} alt="" />
-                            {/* When User clicks on a movie poster, a modal will open with more info */}
-                        </div>
-                    );
-                    const joined = this.state.display.concat(HTMLMovie); //concat the state array with new list of movies
-                    this.setState({ display: joined }, () => console.log(this.state.display));
-                });
-            });
+        // let url = `https://api.themoviedb.org/3/discover/${this.props.searchTypeFormat}?api_key=508d690fdc412430a70ba8b4d841b0e0&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.state.page}`;
+        // console.log(url);
+        // axios(url)
+        //     .then(res => {
+        //         res.data.results.forEach(movie => {
+        //             let imageLink = `https://image.tmdb.org/t/p/w400${movie.poster_path}`; //link to the poster image
+        //             let HTMLMovie = (
+        //                 <div className="movie">
+        //                     <img onClick={() => this.renderModal(movie)} className="movie__img" src={imageLink} alt="" />
+        //                     {/* When User clicks on a movie poster, a modal will open with more info */}
+        //                 </div>
+        //             );
+        //             const joined = this.state.display.concat(HTMLMovie); //concat the state array with new list of movies
+        //             this.setState({ display: joined }, () => console.log(this.state.display));
+        //         });
+        //     });
     }
 
     loadMoreDiscoverData() {

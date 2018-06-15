@@ -10,18 +10,23 @@ class Search extends Component {
         this.state = {
             searchType: "MostPopular", // seach type is "mostpopular" by default
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
-         }
+        }
+        this.formatSelection = this.formatSelection.bind(this);
     }
 
-    searchTypeRender(){
+    formatSelection(format){
+        this.setState({ searchTypeFormat: format}, console.log("Updated format"));
+    }
+
+    searchTypeRender(format){
         switch(this.state.searchType){
             case "MostPopular":
                 return (
                     <MostPopular
-                        searchTypeFormat={this.state.searchTypeFormat}
+                        searchTypeFormat={format}
                         page={this.state.page}
                         maxPage={this.state.maxPage}
-                        loadMoreDiscoverData={this.loadMoreDiscoverData}
+                        onSwitch={this.state.onSwitch}
                     />
                 );
         }
@@ -31,8 +36,8 @@ class Search extends Component {
         return (
             <div className="search">
                 <Navbar/>
-                <FormatSelector/>
-                {this.searchTypeRender()}
+                <FormatSelector formatSelection={this.formatSelection} />
+                {this.searchTypeRender(this.state.searchTypeFormat)}
             </div>
         );
     }
