@@ -43,8 +43,15 @@ class DiscoverMovieModal extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-            <h1>{movie.title}</h1>
-            <p>Released on: {movie.release_date}</p>
+            <h1>{this.props.searchTypeFormat === "movie" ?
+                movie.title:
+                movie.original_name
+              }</h1>
+            <p>Released on: {
+                this.props.searchTypeFormat === "movie" ?
+                movie.release_date :
+                movie.first_air_date
+              }</p>
             <p>Rating: {movie.vote_average}</p>
             <p>{movie.overview}</p>
         </Modal>
