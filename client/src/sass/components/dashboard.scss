@@ -2,35 +2,55 @@
     min-height: 100vh;
     background-color: rgb(14, 59, 126);
     color: white;
-    font-family: "Courier New", Courier, monospace;
 
     &__content{
         display: flex;
         min-height: 92vh;
+
+        @media only screen and (max-width: 600px) {
+            flex-direction: column;
+        }
+
         &--navigation{
-            //border: 1px solid white;
-            background-color: green;
+            background: linear-gradient(
+                        to bottom, #0E3B7E, rgb(51, 110, 199), rgb(144, 183, 241));
+            background-repeat: no-repeat;
+            background-size: cover;
             display: flex;
             flex-direction: column;
             padding: 2rem;
             width: 30%;
 
-
-
             .greeting{
                 font-size: 2rem;
             }
 
+            @media only screen and (max-width: 600px) {
+                flex-direction: row;
+                width: 100%;
+                padding: 0;
+                flex-wrap: wrap;
+            }
            .side-nav{
                 display: flex;
                 flex-direction: column;
                 border-radius: 5px;
                 background-color: rgb(26, 74, 145);
                 box-shadow: 4px 5px 3px #1c1a8b;
+
+                @media only screen and (max-width: 600px) {
+                    flex-direction: row;
+                }
+
                 &__link{
                     color: white;
                     padding: 2rem;
                     width: 100%;
+                    border-top: 1px solid rgb(77, 135, 223);
+
+                    @media only screen and (max-width: 600px) {
+                        padding: 1rem;
+                    }
 
                     &:hover{
                         background-color: rgba(255, 255, 255, 0.459);

@@ -1,7 +1,7 @@
 .landing{
     background: linear-gradient(
-        rgba(0, 0, 0, 0.747), 
-        rgba(109, 109, 109, 0.486)
+        #123E81,
+        rgba(92, 157, 255, .4)
       ), url(../images/landing1.jpg);
     height: 100vh;
     background-size: cover;
@@ -13,7 +13,6 @@
         flex-direction: column;
         padding-right: 10rem;
         padding-top: 6rem;
-        font-family: "Courier New", Courier, monospace;
         align-items: flex-end;
 
         @media only screen and (max-width: 700px) {
@@ -38,7 +37,7 @@
             @media only screen and (max-width: 700px) {
                 width: 15rem;
             }
-        }       
+        }
 
         &--login{
             background-color: white;
@@ -62,5 +61,5 @@
         }
     }
 
-   
+
 }

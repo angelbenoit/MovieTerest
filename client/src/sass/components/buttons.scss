@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Shadows Into Light', cursive;
+
+    @media only screen and (max-width: 600px) {
+        align-items: inherit;
+    }
 
     &__group{
         background-color: #134083;
@@ -11,10 +16,16 @@
         font-weight: 800;
         font-size: 1.3rem;
         border-bottom: 2px solid white;
+        cursor: pointer;
+        transition: all .5s;
 
         &:nth-child(2){
             border-left: 2px solid white;
             border-right: 2px solid white;
+        }
+
+        &:hover{
+            background-color: #3B73C8;
         }
 
         @media only screen and (max-width: 600px) {
@@ -35,10 +46,16 @@
         padding: .5rem;
         font-weight: 800;
         color: white;
+        cursor: pointer;
         border-bottom: 2px solid white;
+        transition: all .5s;
 
         &:nth-child(2){
             border-left: 2px solid white;
+        }
+
+        &:hover{
+            background-color: #134083;
         }
 
         @media only screen and (max-width: 600px) {
