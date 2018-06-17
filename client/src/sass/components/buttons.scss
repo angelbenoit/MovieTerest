@@ -72,4 +72,9 @@
     border: none;
     background-color: transparent;
     border-bottom: 2px solid white;
+    color: white;
+}
+
+::placeholder{
+    color: white;
 }
