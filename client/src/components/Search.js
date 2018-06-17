@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import FormatSelector from './FormatSelector';
 import MostPopular from './MostPopular';
 import Navbar from './Navbar';
+import * as actions from '../Actions/index';
+import { fetchPopular } from '../Actions/index';
 
 class Search extends Component {
     constructor(props) {
@@ -12,6 +15,7 @@ class Search extends Component {
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
         }
         this.formatSelection = this.formatSelection.bind(this);
+
     }
 
     formatSelection(format){
@@ -38,9 +42,16 @@ class Search extends Component {
                 <Navbar/>
                 <FormatSelector formatSelection={this.formatSelection} />
                 {this.searchTypeRender(this.state.searchTypeFormat)}
+                <button onClick={fetchPopular("tv", 1)}>TEST</button>
             </div>
         );
     }
 }
 
-export default Search;
+function mapStateToProps(state) {
+    return {
+        popular: state.popular
+    };
+}
+
+export default connect(mapStateToProps, actions)(Search);

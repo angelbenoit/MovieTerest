@@ -56,6 +56,11 @@ html, body {
         width: 100%;
         border: none; } }
 
+.custom-search {
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid white; }
+
 .dashboard {
   min-height: 100vh;
   background-color: #0e3b7e;
