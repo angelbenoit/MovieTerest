@@ -11,25 +11,25 @@ class Search extends Component {
         this.state = {
             page: 1,          // initial page starts at 1
             maxPage: 1000,   // The api allows a maximum of 1000 pages
-            list: [],
             searchType: "MostPopular", // seach type is "mostpopular" by default
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
         }
         this.formatSelection = this.formatSelection.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
         this.searchTypeRender = this.searchTypeRender.bind(this);
+        this.updateData = this.updateData.bind(this);
+        this.renderHTML = this.renderHTML.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.updateData();
     }
 
     updateData(){
         this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
-        if(this.props.popular.results){
-            this.setState({list: this.props.popular.results}, () => console.log(this.state.list));
-        }
+        //console.log(this.renderHTML());
     }
+
 
     formatSelection(format){
         this.setState({ searchTypeFormat: format}, () => console.log("Updated format"));
@@ -44,20 +44,37 @@ class Search extends Component {
     }
 
     searchTypeRender(){
+        console.log("Rendering data");
         switch(this.state.searchType){
             case "MostPopular":
                 return (
                     <MostPopular
-                        data={this.state.list}
+                        //data={this.state.list}
+                        test={this.renderHTML()}
                     />
                 );
         }
     }
 
+    renderHTML(){
+        switch(this.props.popular){
+            case null:
+                console.log("NULL")
+                return [];
+            case false:
+                console.log("FALSE")
+                return [];
+            default:
+                return this.props.popular;
+        }
+    }
+
     render() {
+       // console.log(this.renderHTML())
         return (
             <div className="search">
                 <Navbar/>
+
                 {this.searchTypeRender()}
                 <button onClick={this.updateSearch}>TEST</button>
             </div>
@@ -67,7 +84,7 @@ class Search extends Component {
 
 function mapStateToProps(state) {
     return {
-        popular: state.popular
+        popular: state.popular.results
     };
 }
 
