@@ -18,7 +18,6 @@ class Search extends Component {
         this.updateSearch = this.updateSearch.bind(this);
         this.searchTypeRender = this.searchTypeRender.bind(this);
         this.updateData = this.updateData.bind(this);
-        this.renderHTML = this.renderHTML.bind(this);
     }
 
     componentDidMount() {
@@ -27,7 +26,6 @@ class Search extends Component {
 
     updateData(){
         this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
-        //console.log(this.renderHTML());
     }
 
 
@@ -49,28 +47,12 @@ class Search extends Component {
             case "MostPopular":
                 return (
                     <MostPopular
-                        //data={this.state.list}
-                        test={this.renderHTML()}
                     />
                 );
         }
     }
 
-    renderHTML(){
-        switch(this.props.popular){
-            case null:
-                console.log("NULL")
-                return [];
-            case false:
-                console.log("FALSE")
-                return [];
-            default:
-                return this.props.popular;
-        }
-    }
-
     render() {
-       // console.log(this.renderHTML())
         return (
             <div className="search">
                 <Navbar/>
@@ -82,11 +64,4 @@ class Search extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        popular: state.popular.results
-    };
-}
-
-
-export default connect(mapStateToProps, actions)(Search);
+export default connect(null, actions)(Search);

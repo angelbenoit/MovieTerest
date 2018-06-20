@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { connect } from 'react-redux';
 
 const customStyles = {
   content : {
@@ -13,7 +14,7 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-class DiscoverMovieModal extends React.Component {
+class PopularModal extends React.Component {
   constructor(props) {
     super(props);
     console.log(this.props.isOpen);
@@ -35,7 +36,7 @@ class DiscoverMovieModal extends React.Component {
   }
 
   render() {
-    const movie = this.props.movieData;
+      const data = this.props.modalData;
     return (
         <Modal
           isOpen={this.props.isOpen}
@@ -43,20 +44,16 @@ class DiscoverMovieModal extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-            <h1>{this.props.searchTypeFormat === "movie" ?
-                movie.title:
-                movie.original_name
-              }</h1>
-            <p>Released on: {
-                this.props.searchTypeFormat === "movie" ?
-                movie.release_date :
-                movie.first_air_date
-              }</p>
-            <p>Rating: {movie.vote_average}</p>
-            <p>{movie.overview}</p>
+          <h1>{data.name}</h1>
         </Modal>
     );
   }
 }
 
-export default DiscoverMovieModal;
+function mapStateToProps(state) {
+  return {
+      modalData: state.modalData
+  };
+}
+
+export default connect(mapStateToProps)(PopularModal);

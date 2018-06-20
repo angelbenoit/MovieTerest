@@ -15,8 +15,9 @@
     padding: 5rem;
 
     .movie{
-        background: rgb(2, 103, 255);
-        &__img{
+        background: rgb(88, 155, 255);
+
+        img{
             opacity: 0.7;
             cursor: pointer;
             &:hover{
