@@ -5,7 +5,7 @@ class SearchButtons extends Component {
         return (
             <div>
                 {/* These three buttons will be shown by default */}
-                <button onClick={() => this.props.formatSelection("movie")} className="search-buttons__group">Top Rated</button>
+                <button onClick={() => this.props.formatSelection("MostPopular")} className="search-buttons__group">Top Rated</button>
                 <button className="search-buttons__group">Custom Search</button>
                 <button className="search-buttons__group">Search By Category</button>
             </div>

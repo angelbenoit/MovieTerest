@@ -4,6 +4,7 @@ import MostPopular from './MostPopular';
 import Navbar from './Navbar';
 import * as actions from '../Actions/index';
 import DefaultSearch from './selections/SearchButtons';
+import FormatButtons from './selections/SearchFormatButtons';
 
 class Search extends Component {
     constructor(props) {
@@ -14,10 +15,11 @@ class Search extends Component {
             maxPage: 1000,   // The api allows a maximum of 1000 pages
             searchType: "MostPopular", // seach type is "mostpopular" by default
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
-
+            showFormatButtons: false,
         }
         this.formatSelection = this.formatSelection.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
+        this.searchTypeSelection = this.searchTypeSelection.bind(this);
         this.searchTypeRender = this.searchTypeRender.bind(this);
         this.updateData = this.updateData.bind(this);
     }
@@ -30,8 +32,11 @@ class Search extends Component {
         this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
     }
 
-
     formatSelection(format){
+        this.setState({ searchType: format, showFormatButtons: true}, () => this.updateData());
+    }
+
+    searchTypeSelection(format){
         this.setState({ searchTypeFormat: format}, () => this.updateData());
     }
 
@@ -62,6 +67,9 @@ class Search extends Component {
                     <DefaultSearch
                         formatSelection={this.formatSelection}
                     />
+                    {
+                        this.state.showFormatButtons ?
+                        <FormatButtons searchTypeFormat={this.searchTypeSelection}/> : ""}
 
                 </div>
 
