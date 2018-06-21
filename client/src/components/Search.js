@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MostPopular from './MostPopular';
 import Navbar from './Navbar';
 import * as actions from '../Actions/index';
+import DefaultSearch from './selections/SearchButtons';
 
 class Search extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class Search extends Component {
             maxPage: 1000,   // The api allows a maximum of 1000 pages
             searchType: "MostPopular", // seach type is "mostpopular" by default
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
+
         }
         this.formatSelection = this.formatSelection.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
@@ -30,7 +32,7 @@ class Search extends Component {
 
 
     formatSelection(format){
-        this.setState({ searchTypeFormat: format}, () => console.log("Updated format"));
+        this.setState({ searchTypeFormat: format}, () => this.updateData());
     }
 
     updateSearch(){
@@ -56,6 +58,12 @@ class Search extends Component {
         return (
             <div className="search">
                 <Navbar/>
+                <div className="search-buttons">
+                    <DefaultSearch
+                        formatSelection={this.formatSelection}
+                    />
+
+                </div>
 
                 {this.searchTypeRender()}
                 <button onClick={this.updateSearch}>TEST</button>
