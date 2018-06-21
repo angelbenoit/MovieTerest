@@ -4,7 +4,7 @@ class SearchInputText extends Component {
     render() {
         return (
             <div>
-                <form>
+                <form className="animated bounceInUp">
                     <input className="custom-search" type="text" placeholder="Search" />
                 </form>
             </div>

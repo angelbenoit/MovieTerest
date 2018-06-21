@@ -5,9 +5,14 @@ export const fetchUser = () => async (dispatch) => {
     const res = await axios.get("/api/current_user");
     dispatch({type: FETCH_USER, payload: res.data});
 };
-
-export const fetchPopular = (searchTypeFormat, page) => async (dispatch) => {
-    const res = await axios.get(`https://api.themoviedb.org/3/discover/${searchTypeFormat}?api_key=508d690fdc412430a70ba8b4d841b0e0&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`);
+// searchType is what type of search being done, if it is "discover"(intial), then it returns most popular
+// if search Type is "search", a query will be required, which is initially empty.
+export const fetchPopular = (searchType="discover", searchTypeFormat, page, query="") => async (dispatch) => {
+    let url = `https://api.themoviedb.org/3/${searchType}/${searchTypeFormat}?api_key=508d690fdc412430a70ba8b4d841b0e0&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`;
+    if(searchType === "search"){
+        url = url + `&query=${query}`;
+    }
+    const res = await axios.get(url);
     dispatch({type: FETCH_POPULAR, payload: res.data});
 };
 

@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import * as actions from '../Actions/index';
 import DefaultSearch from './selections/SearchButtons';
 import FormatButtons from './selections/SearchFormatButtons';
+import CustomSearch from './selections/SearchInputText';
 
 class Search extends Component {
     constructor(props) {
@@ -13,8 +14,9 @@ class Search extends Component {
         this.state = {
             page: 1,          // initial page starts at 1
             maxPage: 1000,   // The api allows a maximum of 1000 pages
-            searchType: "MostPopular", // seach type is "mostpopular" by default
+            searchType: "discover", // seach type is "mostpopular" by default
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
+            customQuery: "",
             showFormatButtons: false,
         }
         this.formatSelection = this.formatSelection.bind(this);
@@ -29,7 +31,7 @@ class Search extends Component {
     }
 
     updateData(){
-        this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
+        this.props.fetchPopular(this.state.searchType, this.state.searchTypeFormat, this.state.page, this.state.customQuery);
     }
 
     formatSelection(format){
@@ -51,7 +53,12 @@ class Search extends Component {
     searchTypeRender(){
         console.log("Rendering data");
         switch(this.state.searchType){
-            case "MostPopular":
+            case "discover":
+                return (
+                    <MostPopular
+                    />
+                );
+            case "search":
                 return (
                     <MostPopular
                     />
@@ -69,7 +76,13 @@ class Search extends Component {
                     />
                     {
                         this.state.showFormatButtons ?
-                        <FormatButtons searchTypeFormat={this.searchTypeSelection}/> : ""}
+                        <FormatButtons searchTypeFormat={this.searchTypeSelection}/> : ""
+                    }
+                    {
+                        this.state.searchType === "search" ?
+                        <CustomSearch /> :
+                        ""
+                    }
 
                 </div>
 
