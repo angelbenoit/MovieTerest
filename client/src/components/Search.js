@@ -6,6 +6,8 @@ import * as actions from '../Actions/index';
 import DefaultSearch from './selections/SearchButtons';
 import FormatButtons from './selections/SearchFormatButtons';
 import CustomSearch from './selections/SearchInputText';
+import CustomSearchDisplay from './CustomSearchDisplay';
+import GenreSearchDisplay from './GenreSearchDisplay';
 
 class Search extends Component {
     constructor(props) {
@@ -60,7 +62,12 @@ class Search extends Component {
                 );
             case "search":
                 return (
-                    <MostPopular
+                    <CustomSearchDisplay
+                    />
+                );
+            case "genre":
+                return (
+                    <GenreSearchDisplay
                     />
                 );
         }
