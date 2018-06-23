@@ -6,8 +6,7 @@ import * as actions from '../Actions/index';
 import DefaultSearch from './selections/SearchButtons';
 import FormatButtons from './selections/SearchFormatButtons';
 import CustomSearch from './selections/SearchInputText';
-import CustomSearchDisplay from './CustomSearchDisplay';
-import GenreSearchDisplay from './GenreSearchDisplay';
+import SearchGenres from './selections/SearchCategories';
 
 class Search extends Component {
     constructor(props) {
@@ -23,6 +22,7 @@ class Search extends Component {
         }
         this.formatSelection = this.formatSelection.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
+        this.renderGenres = this.renderGenres.bind(this);
         this.searchTypeSelection = this.searchTypeSelection.bind(this);
         this.searchTypeRender = this.searchTypeRender.bind(this);
         this.updateData = this.updateData.bind(this);
@@ -33,11 +33,16 @@ class Search extends Component {
     }
 
     updateData(){
-        this.props.fetchPopular(this.state.searchType, this.state.searchTypeFormat, this.state.page, this.state.customQuery);
+        this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
     }
 
     formatSelection(format){
         this.setState({ searchType: format, showFormatButtons: true}, () => this.updateData());
+    }
+
+    renderGenres(){
+        this.props.fetchGenreList(this.state.searchTypeFormat);
+        return (<SearchGenres />);
     }
 
     searchTypeSelection(format){
@@ -60,16 +65,6 @@ class Search extends Component {
                     <MostPopular
                     />
                 );
-            case "search":
-                return (
-                    <CustomSearchDisplay
-                    />
-                );
-            case "genre":
-                return (
-                    <GenreSearchDisplay
-                    />
-                );
         }
     }
 
@@ -90,10 +85,16 @@ class Search extends Component {
                         <CustomSearch /> :
                         ""
                     }
+                    {
+                        this.state.searchType === "genre" ?
+                        this.renderGenres() :
+                        ""
+                    }
 
                 </div>
 
-                {this.searchTypeRender()}
+                {/* {this.searchTypeRender()} */}
+                <MostPopular/>
                 <button onClick={this.updateSearch}>TEST</button>
             </div>
         );

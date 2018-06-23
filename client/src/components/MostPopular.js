@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PopularModal from './PopularModal';
+import MovieModal from './modals/MovieModal';
 import { connect } from 'react-redux';
 import * as actions from '../Actions/index';
 
@@ -48,7 +48,7 @@ class MostPopular extends Component {
         return (
             <div className="movieList">
                 {this.tests()}
-                <PopularModal
+                <MovieModal
                     isOpen={this.state.openModal}
                     closeModal={this.closeModal}
                 />

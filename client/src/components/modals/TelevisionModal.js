@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class GenreSearchDisplay extends Component {
+class TelevisionModal extends Component {
     render() {
         return (
             <div>
-                <p className="test">TEST</p>
+                <h1>TelevisionModal</h1>
             </div>
         );
     }
 }
 
-export default GenreSearchDisplay;
+export default TelevisionModal;
