@@ -56,6 +56,32 @@ html, body {
         width: 100%;
         border: none; } }
 
+.genre_item {
+  color: white;
+  padding: .5rem;
+  background-color: #134da3;
+  cursor: pointer;
+  font-weight: 800;
+  transition: all .5s; }
+  .genre_item:not(:last-child) {
+    border-right: 1px solid white; }
+  .genre_item:hover {
+    background-color: #3B73C8; }
+
+.genre_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+  margin-top: 1.5rem; }
+  @media only screen and (max-width: 600px) {
+    .genre_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border: none;
+      margin-top: 0; } }
+
 .custom-search {
   border: none;
   background-color: transparent;

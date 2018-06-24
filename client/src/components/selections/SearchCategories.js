@@ -4,17 +4,23 @@ import { connect } from 'react-redux';
 class SearchCategories extends Component {
     renderGenreListHTML() {
         let list = [];
-        for(var key in this.props.genres){
-            //console.log(this.props.genres[key]);
-            list.push((<div>{this.props.genres[key].name}</div>))
+        if(this.props.genres){
+            list = this.props.genres.map(item => {
+                return (
+                    <div className="genre_item">
+                        <p>{item.name}</p>
+                    </div>
+                )
+            });
         }
-        console.log(list)
+
+        console.log(this.props.genres)
         return list;
     }
 
     render() {
         return (
-            <div>
+            <div className="genre_list">
                 {this.renderGenreListHTML()}
             </div>
         );
@@ -23,7 +29,7 @@ class SearchCategories extends Component {
 
 function mapStateToProps(state) {
     return {
-        genres: state.genreList
+        genres: state.genreList.genres
     };
 }
 
