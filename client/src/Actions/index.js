@@ -27,7 +27,12 @@ export const fetchGenreList = (searchTypeFormat) => async (dispatch) => {
     dispatch({type: FETCH_GENRE_LIST, payload: res.data});
 };
 
-//TODO: Add fetch FETCH_SEARCH_BY_GENRE
+export const fetchByGenre = (searchTypeFormat, page, genre) => async (dispatch) => {
+    let url = `https://api.themoviedb.org/3/discover/${searchTypeFormat}?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}`;
+    const res = await axios.get(url);
+    console.log(url);
+    dispatch({type: FETCH_SEARCH_BY_GENRE, payload: res.data});
+};
 
 export const modalDisplay = (data) => async (dispatch) => { //data to be displayed in the modal
     console.log(data);

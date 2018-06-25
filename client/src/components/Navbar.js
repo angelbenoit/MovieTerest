@@ -21,7 +21,7 @@ class Navbar extends Component {
                             <i className="fas fa-film"></i> Search
                         </NavLink>
                         <NavLink className="nav-item nav-link" to="/api/logout" exact>
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i className="fas fa-sign-out-alt"></i> Logout
                         </NavLink>
                     </div>
                 </div>

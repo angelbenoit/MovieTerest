@@ -18,6 +18,7 @@ class Search extends Component {
             searchType: "discover", // seach type is "mostpopular" by default
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
             customQuery: "",
+            genre: 18, //default genre id is an integer
             showFormatButtons: false,
         }
         this.formatSelection = this.formatSelection.bind(this);
@@ -25,6 +26,7 @@ class Search extends Component {
         this.renderGenres = this.renderGenres.bind(this);
         this.searchTypeSelection = this.searchTypeSelection.bind(this);
         this.searchTypeRender = this.searchTypeRender.bind(this);
+        this.setGenre = this.setGenre.bind(this);
         this.updateData = this.updateData.bind(this);
     }
 
@@ -33,7 +35,13 @@ class Search extends Component {
     }
 
     updateData(){
-        this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
+        switch(this.state.searchType){
+            case "discover":
+                this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
+            case "genre":
+                this.props.fetchByGenre(this.state.searchTypeFormat, this.state.page, this.state.genre);
+        }
+
     }
 
     formatSelection(format){
@@ -42,11 +50,15 @@ class Search extends Component {
 
     renderGenres(){
         this.props.fetchGenreList(this.state.searchTypeFormat);
-        return (<SearchGenres />);
+        return (<SearchGenres setGenre={this.setGenre}/>);
     }
 
     searchTypeSelection(format){
         this.setState({ searchTypeFormat: format}, () => this.updateData());
+    }
+
+    setGenre(id){
+        this.setState({ genre: id}, () => this.updateData());
     }
 
     updateSearch(){
@@ -94,7 +106,7 @@ class Search extends Component {
                 </div>
 
                 {/* {this.searchTypeRender()} */}
-                <MostPopular/>
+                <MostPopular format={this.state.searchType}/>
                 <button onClick={this.updateSearch}>TEST</button>
             </div>
         );

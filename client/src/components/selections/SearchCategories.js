@@ -7,8 +7,8 @@ class SearchCategories extends Component {
         if(this.props.genres){
             list = this.props.genres.map(item => {
                 return (
-                    <div className="genre_item">
-                        <p>{item.name}</p>
+                    <div key={item.name} className="genre_item">
+                        <p onClick={() => this.props.setGenre(item.id)}>{item.name}</p>
                     </div>
                 )
             });
