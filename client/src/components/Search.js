@@ -27,6 +27,7 @@ class Search extends Component {
         this.searchTypeSelection = this.searchTypeSelection.bind(this);
         this.searchTypeRender = this.searchTypeRender.bind(this);
         this.setGenre = this.setGenre.bind(this);
+        this.setQuery = this.setQuery.bind(this);
         this.updateData = this.updateData.bind(this);
     }
 
@@ -35,6 +36,7 @@ class Search extends Component {
     }
 
     updateData(){
+        console.log(this.state.genre);
         switch(this.state.searchType){
             case "discover":
                 this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
@@ -59,6 +61,10 @@ class Search extends Component {
 
     setGenre(id){
         this.setState({ genre: id}, () => this.updateData());
+    }
+
+    setQuery(query){
+        this.setState({ customQuery: query }, () => this.updateData());
     }
 
     updateSearch(){
@@ -94,7 +100,7 @@ class Search extends Component {
                     }
                     {
                         this.state.searchType === "search" ?
-                        <CustomSearch /> :
+                        <CustomSearch  /> :
                         ""
                     }
                     {

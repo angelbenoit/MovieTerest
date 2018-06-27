@@ -16,7 +16,7 @@ export const fetchPopular = (searchTypeFormat, page) => async (dispatch) => {
 };
 
 export const fetchCustom = (searchTypeFormat, page, query="") => async (dispatch) => {
-    let url = `https://api.themoviedb.org/3/search/${searchTypeFormat}?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`;
+    let url = `https://api.themoviedb.org/3/search/${searchTypeFormat}?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&query=${query}`;
     const res = await axios.get(url);
     dispatch({type: FETCH_CUSTOM, payload: res.data});
 };
@@ -33,6 +33,8 @@ export const fetchByGenre = (searchTypeFormat, page, genre) => async (dispatch) 
     console.log(url);
     dispatch({type: FETCH_SEARCH_BY_GENRE, payload: res.data});
 };
+
+
 
 export const modalDisplay = (data) => async (dispatch) => { //data to be displayed in the modal
     console.log(data);
