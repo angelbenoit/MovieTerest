@@ -9,24 +9,25 @@ class MostPopular extends Component {
 
         this.state = {
             openModal: false,
-            modalData: {}
+            modalData: {},
         }
         this.displayModal = this.displayModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.tests = this.tests.bind(this);
     }
 
-    displayModal(data){
+    displayModal(data) {
         this.setState({ openModal: true });
         this.props.modalDisplay(data);
     }
 
-    closeModal(){
+    closeModal() {
         this.setState({ openModal: false });
     }
 
-    tests(data){
+    tests(data) {
         let tempArray = [];
-        if(data){
+        if (data) {
             console.log(data)
             data.map(item => {
                 tempArray.push(
@@ -34,7 +35,7 @@ class MostPopular extends Component {
                         <img
                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                             onClick={() => this.displayModal(item)}
-                            />
+                        />
                     </div>
                 )
             })
@@ -42,12 +43,10 @@ class MostPopular extends Component {
         return tempArray;
     }
 
-
     render() {
-        //console.log(this.tests())
         return (
             <div className="movieList">
-                {this.props.format === "genre" ?  this.tests(this.props.genre) : this.tests(this.props.popular)}
+                {this.props.format === "genre" ? this.tests(this.props.genre) : this.tests(this.props.popular)}
                 <MovieModal
                     isOpen={this.state.openModal}
                     closeModal={this.closeModal}

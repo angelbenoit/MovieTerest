@@ -5,7 +5,6 @@ import Navbar from './Navbar';
 import * as actions from '../Actions/index';
 import DefaultSearch from './selections/SearchButtons';
 import FormatButtons from './selections/SearchFormatButtons';
-import CustomSearch from './selections/SearchInputText';
 import SearchGenres from './selections/SearchCategories';
 
 class Search extends Component {
@@ -17,7 +16,6 @@ class Search extends Component {
             maxPage: 1000,   // The api allows a maximum of 1000 pages
             searchType: "discover", // seach type is "mostpopular" by default
             searchTypeFormat: "tv", // search type format is "movie" by default and can also pick tv format
-            customQuery: "",
             genre: 18, //default genre id is an integer
             showFormatButtons: false,
         }
@@ -25,9 +23,7 @@ class Search extends Component {
         this.updateSearch = this.updateSearch.bind(this);
         this.renderGenres = this.renderGenres.bind(this);
         this.searchTypeSelection = this.searchTypeSelection.bind(this);
-        this.searchTypeRender = this.searchTypeRender.bind(this);
         this.setGenre = this.setGenre.bind(this);
-        this.setQuery = this.setQuery.bind(this);
         this.updateData = this.updateData.bind(this);
     }
 
@@ -63,26 +59,11 @@ class Search extends Component {
         this.setState({ genre: id}, () => this.updateData());
     }
 
-    setQuery(query){
-        this.setState({ customQuery: query }, () => this.updateData());
-    }
-
     updateSearch(){
         if(this.state.page <= 1000){
             this.setState(prevState => {
                 return { page: prevState.page + 1 }
             }, () => this.updateData());
-        }
-    }
-
-    searchTypeRender(){
-        console.log("Rendering data");
-        switch(this.state.searchType){
-            case "discover":
-                return (
-                    <MostPopular
-                    />
-                );
         }
     }
 
@@ -99,11 +80,6 @@ class Search extends Component {
                         <FormatButtons searchTypeFormat={this.searchTypeSelection}/> : ""
                     }
                     {
-                        this.state.searchType === "search" ?
-                        <CustomSearch  /> :
-                        ""
-                    }
-                    {
                         this.state.searchType === "genre" ?
                         this.renderGenres() :
                         ""
@@ -111,7 +87,6 @@ class Search extends Component {
 
                 </div>
 
-                {/* {this.searchTypeRender()} */}
                 <MostPopular format={this.state.searchType}/>
                 <button onClick={this.updateSearch}>TEST</button>
             </div>
