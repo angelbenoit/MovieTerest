@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MovieModal from './modals/MovieModal';
+import DisplayModal from './DisplayModal';
 import { connect } from 'react-redux';
 import * as actions from '../Actions/index';
 
@@ -8,8 +8,7 @@ class MostPopular extends Component {
         super(props);
 
         this.state = {
-            openModal: false,
-            modalData: {},
+            openModal: false
         }
         this.displayModal = this.displayModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -46,11 +45,14 @@ class MostPopular extends Component {
     render() {
         return (
             <div className="movieList">
-                {this.props.format === "genre" ? this.tests(this.props.genre) : this.tests(this.props.popular)}
-                <MovieModal
+                {this.props.searchType === "genre" ? this.tests(this.props.genre) : this.tests(this.props.popular)}
+
+                <DisplayModal
                     isOpen={this.state.openModal}
                     closeModal={this.closeModal}
+                    format={this.props.format}
                 />
+
             </div>
         );
     }

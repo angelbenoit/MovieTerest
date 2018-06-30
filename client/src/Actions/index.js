@@ -11,6 +11,7 @@ export const fetchUser = () => async (dispatch) => {
 // if search Type is "search", a query will be required, which is initially empty.
 export const fetchPopular = (searchTypeFormat, page) => async (dispatch) => {
     let url = `https://api.themoviedb.org/3/discover/${searchTypeFormat}?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`;
+    console.log(url);
     const res = await axios.get(url);
     dispatch({type: FETCH_POPULAR, payload: res.data});
 };
@@ -24,7 +25,7 @@ export const fetchGenreList = (searchTypeFormat) => async (dispatch) => {
 export const fetchByGenre = (searchTypeFormat, page, genre) => async (dispatch) => {
     let url = `https://api.themoviedb.org/3/discover/${searchTypeFormat}?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}`;
     const res = await axios.get(url);
-    console.log(url);
+    //console.log(url);
     dispatch({type: FETCH_SEARCH_BY_GENRE, payload: res.data});
 };
 

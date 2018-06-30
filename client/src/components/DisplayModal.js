@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 const customStyles = {
   content : {
     top                   : '50%',
+    background            : '#3D76CB',
+    color                 : 'white',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
@@ -14,7 +16,7 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-class PopularModal extends React.Component {
+class DisplayModal extends React.Component {
   constructor(props) {
     super(props);
     console.log(this.props.isOpen);
@@ -35,8 +37,28 @@ class PopularModal extends React.Component {
     this.props.closeModal();
   }
 
+  movieOrTelevisionModal(){
+    const data = this.props.modalData;
+    if(this.props.format === "movie"){
+      return(
+        <div>
+          <h1>{data.title}</h1>
+          <h3>{data.overview}</h3>
+        </div>
+      )
+    }
+    else{
+      return(
+        <div>
+          <h1>{data.name}</h1>
+          <h3>{data.overview}</h3>
+        </div>
+      )
+    }
+  }
+
   render() {
-      const data = this.props.modalData;
+
     return (
         <Modal
           isOpen={this.props.isOpen}
@@ -44,7 +66,7 @@ class PopularModal extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <h1>{data.name}</h1>
+          {this.movieOrTelevisionModal()}
         </Modal>
     );
   }
@@ -56,4 +78,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PopularModal);
+export default connect(mapStateToProps)(DisplayModal);

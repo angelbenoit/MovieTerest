@@ -87,7 +87,10 @@ class Search extends Component {
 
                 </div>
 
-                <MostPopular format={this.state.searchType}/>
+                <MostPopular
+                    searchType={this.state.searchType}
+                    format={this.state.searchTypeFormat}
+                />
                 <button onClick={this.updateSearch}>TEST</button>
             </div>
         );

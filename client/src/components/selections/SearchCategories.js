@@ -20,7 +20,7 @@ class SearchCategories extends Component {
 
     render() {
         return (
-            <div className="genre_list">
+            <div className="genre_list animated bounceInUp">
                 {this.renderGenreListHTML()}
             </div>
         );
