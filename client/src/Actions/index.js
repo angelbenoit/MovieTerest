@@ -5,13 +5,14 @@ const APIKEY = '508d690fdc412430a70ba8b4d841b0e0';
 
 export const fetchUser = () => async (dispatch) => {
     const res = await axios.get("/api/current_user");
+    //console.log(res.data);
     dispatch({type: FETCH_USER, payload: res.data});
 };
 // searchType is what type of search being done, if it is "discover"(intial), then it returns most popular
 // if search Type is "search", a query will be required, which is initially empty.
 export const fetchPopular = (searchTypeFormat, page) => async (dispatch) => {
     let url = `https://api.themoviedb.org/3/discover/${searchTypeFormat}?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`;
-    console.log(url);
+    //console.log(url);
     const res = await axios.get(url);
     dispatch({type: FETCH_POPULAR, payload: res.data});
 };
@@ -30,9 +31,7 @@ export const fetchByGenre = (searchTypeFormat, page, genre) => async (dispatch) 
 };
 
 export const modalDisplay = (data) => async (dispatch) => { //data to be displayed in the modal
-    console.log(data);
+    //console.log(data);
     dispatch({ type: FETCH_MODAL, payload: data })
 }
-
-
 

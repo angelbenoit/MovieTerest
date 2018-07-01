@@ -15,6 +15,10 @@ class MostPopular extends Component {
         this.tests = this.tests.bind(this);
     }
 
+    componentDidMount(){
+        this.props.fetchUser();
+    }
+
     displayModal(data) {
         this.setState({ openModal: true });
         this.props.modalDisplay(data);
