@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -27,6 +28,7 @@ class DisplayModal extends React.Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.checkIfAdded = this.checkIfAdded.bind(this);
   }
 
   openModal() {
@@ -45,23 +47,24 @@ class DisplayModal extends React.Component {
       const list = this.props.auth.bucketList;
       for (let i = 0; i < list.length; i++) {
         if (itemToCompare === list[i].overview) {
-          console.log("TRUE")
-          return true; // returns true if overviews are the same, meaning item is already in the bucketList
+          //console.log("TRUE")
+          return (<div><button>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
         }
       }
     }
 
-    else {
-      console.log("FALSE");
-      return false; // returns false if can't find data in bucketList
-    }
+    //else {
+      //console.log("FALSE");
+      return (<div><button onClick={this.postBucketList}>Add</button></div>); // returns false if can't find data in bucketList
+    //}
 
   }
 
   postBucketList = () => {
     //add movie/show to bucketlist database using axios post
     axios.post('/api/add_item', this.props.modalData)
-      .then(this.closeModal());
+      .then(this.closeModal())
+      .then(this.props.history.push("/dashboard"));
   }
 
   movieOrTelevisionModal() {
@@ -95,9 +98,7 @@ class DisplayModal extends React.Component {
         <div>
           {this.movieOrTelevisionModal()}
           {
-            this.checkIfAdded() ?
-            <button>Remove</button> :
-            <button onClick={this.postBucketList}>Add</button>
+            this.checkIfAdded()
           }
         </div>
       </Modal>
@@ -112,4 +113,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(DisplayModal);
+export default  withRouter(connect(mapStateToProps)(DisplayModal));
