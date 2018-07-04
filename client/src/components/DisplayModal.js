@@ -47,8 +47,8 @@ class DisplayModal extends React.Component {
       const list = this.props.auth.bucketList;
       for (let i = 0; i < list.length; i++) {
         if (itemToCompare === list[i].overview) {
-          //console.log("TRUE")
-          return (<div><button>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
+          //pass in modal object to be passed in the remove function
+          return (<div><button onClick={() => this.removeFromBucketList(this.props.modalData)}>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
         }
       }
     }
@@ -63,6 +63,14 @@ class DisplayModal extends React.Component {
   postBucketList = () => {
     //add movie/show to bucketlist database using axios post
     axios.post('/api/add_item', this.props.modalData)
+      .then(this.closeModal())
+      .then(this.props.history.push("/dashboard"));
+  }
+
+  removeFromBucketList = (item) => {
+    //item to be deleted is pass through parameter and will be redirected to dashboard
+    //after deleting
+    axios.post('/api/delete_item', item)
       .then(this.closeModal())
       .then(this.props.history.push("/dashboard"));
   }
