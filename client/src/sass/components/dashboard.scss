@@ -73,7 +73,18 @@
                         url(../images/tvpicture.jpeg);
             background-size: cover;
             background-position: left;
+            @media only screen and (max-width: 600px) {
+                width: 100%;
+                min-height: 76vh;
+            }
         }
     }
 
+}
+
+.list_title{
+    padding: 1rem;
+    list-style: none;
+    background-color: rgba(47, 75, 112, 0.726);
+    border-bottom: 2px solid rgba(120, 136, 155, 0.801);
 }

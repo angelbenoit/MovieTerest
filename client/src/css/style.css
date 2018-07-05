@@ -145,6 +145,16 @@ html, body {
       background: linear-gradient(rgba(77, 135, 223, 0.63), rgba(22, 58, 105, 0.582)), url(../images/tvpicture.jpeg);
       background-size: cover;
       background-position: left; }
+      @media only screen and (max-width: 600px) {
+        .dashboard__content--display {
+          width: 100%;
+          min-height: 76vh; } }
+
+.list_title {
+  padding: 1rem;
+  list-style: none;
+  background-color: rgba(47, 75, 112, 0.726);
+  border-bottom: 2px solid rgba(120, 136, 155, 0.801); }
 
 .landing {
   background: linear-gradient(#123E81, rgba(92, 157, 255, 0.4)), url(../images/landing1.jpg);

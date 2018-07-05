@@ -17,6 +17,20 @@ class Dashboard extends Component {
         }
     }
 
+    getUserBucketList(){
+        let displayList = [];
+        if(this.props.auth){
+            displayList = this.props.auth.bucketList.map(item => {
+                return(
+                    <li className="list_title">
+                        {item.name || item.original_title}
+                    </li>
+                )
+            })
+        }
+        return displayList;
+    }
+
     render() {
         const userData = this.renderContent();
         console.log(userData);
@@ -41,7 +55,7 @@ class Dashboard extends Component {
                     <div className="dashboard__content--display">
                         <div className="userListContainer">
                             <ul className="userListContainer__list">
-
+                                {this.getUserBucketList()}
                             </ul>
                         </div>
                     </div>

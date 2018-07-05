@@ -75,6 +75,8 @@ class DisplayModal extends React.Component {
       .then(this.props.history.push("/dashboard"));
   }
 
+  //The api has different properties for json data depending on format
+  //for movie data, it uses .title rather than .name for tv format
   movieOrTelevisionModal() {
     const data = this.props.modalData;
     if (this.props.format === "movie") {
@@ -105,9 +107,7 @@ class DisplayModal extends React.Component {
       >
         <div>
           {this.movieOrTelevisionModal()}
-          {
-            this.checkIfAdded()
-          }
+          {this.checkIfAdded()}
         </div>
       </Modal>
     );
