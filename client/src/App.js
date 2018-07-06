@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import Search from './components/Search';
+import SearchItem from './components/SearchItem';
 import {BrowserRouter,Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './Actions';
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/search' component={Search} />
+            <Route exact path='/search/:id' component={SearchItem} />
           </div>
         </BrowserRouter>
       </div>

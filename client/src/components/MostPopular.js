@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import DisplayModal from './DisplayModal';
+import SearchItem from './SearchItem';
 import { connect } from 'react-redux';
 import * as actions from '../Actions/index';
+import { withRouter } from "react-router-dom";
 
 class MostPopular extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            openModal: false
-        }
         this.displayModal = this.displayModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
         this.tests = this.tests.bind(this);
     }
 
@@ -20,12 +17,11 @@ class MostPopular extends Component {
     }
 
     displayModal(data) {
-        this.setState({ openModal: true });
+        //this.setState({ openModal: true });
         this.props.modalDisplay(data);
-    }
-
-    closeModal() {
-        this.setState({ openModal: false });
+        //if data format is "TV SHOW", then we can use data.name, if it's "MOVIE", use data.title
+        //json has different properties for different formats
+        this.props.history.push('/search/' + (data.name ? data.name.trim() : data.title.trim()));
     }
 
     tests(data) {
@@ -51,9 +47,7 @@ class MostPopular extends Component {
             <div className="movieList">
                 {this.props.searchType === "genre" ? this.tests(this.props.genre) : this.tests(this.props.popular)}
 
-                <DisplayModal
-                    isOpen={this.state.openModal}
-                    closeModal={this.closeModal}
+                <SearchItem
                     format={this.props.format}
                 />
 
@@ -69,4 +63,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, actions)(MostPopular);
+export default withRouter(connect(mapStateToProps, actions)(MostPopular));
