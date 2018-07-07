@@ -40,7 +40,7 @@ export const modalDisplay = (data) => async (dispatch) => { //data to be display
 export const fetchByID = (id, format) => async (dispatch) => {
     let url = `https://api.themoviedb.org/3/${format}/${id}?api_key=${APIKEY}&language=en-US`;
     const res = await axios.get(url);
-    console.log(res.data);
-    dispatch({ type: FETCH_BY_ID, payload: res });
+    //console.log(res.data);
+    dispatch({ type: FETCH_BY_ID, payload: res.data });
 }
 

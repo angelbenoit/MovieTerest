@@ -82,15 +82,6 @@ html, body {
       border: none;
       margin-top: 0; } }
 
-.custom-search {
-  border: none;
-  background-color: transparent;
-  border-bottom: 2px solid white;
-  color: white; }
-
-::placeholder {
-  color: white; }
-
 .dashboard {
   min-height: 100vh;
   background-color: #0e3b7e;
@@ -206,8 +197,34 @@ html, body {
   background-color: #3081fa;
   background-size: cover;
   min-height: 100vh;
-  height: 100%;
-  color: white; }
+  color: white;
+  padding: 1rem; }
+  .moreDetail__layout {
+    background-color: rgba(36, 90, 172, 0.699);
+    padding: 1rem;
+    display: flex; }
+    @media only screen and (max-width: 850px) {
+      .moreDetail__layout {
+        flex-direction: column;
+        align-items: center; } }
+  @media only screen and (max-width: 850px) {
+    .moreDetail__img img {
+      height: 50vh; } }
+  @media only screen and (max-width: 400px) {
+    .moreDetail__img img {
+      height: 30vh; } }
+  .moreDetail__text {
+    padding: 2rem; }
+  .moreDetail__button {
+    border: none;
+    background-color: #415acc;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 1rem;
+    transition: .3s all; }
+    .moreDetail__button:hover {
+      background-color: #7181ca; }
 
 .navbar .navbar-brand {
   font-size: 2rem;

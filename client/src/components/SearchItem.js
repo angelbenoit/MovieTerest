@@ -7,7 +7,8 @@ import * as actions from '../Actions/index';
 
 class SearchItem extends React.Component {
 
-  componentDidMount(){
+  componentDidMount() {
+    this.props.fetchUser();
     //when user visists link with format and id, use the api to search for details
     this.props.fetchByID(this.props.match.params.id, this.props.match.params.format);
   }
@@ -20,16 +21,16 @@ class SearchItem extends React.Component {
       for (let i = 0; i < list.length; i++) {
         if (itemToCompare === list[i].overview) {
           //pass in modal object to be passed in the remove function
-          //return (<div><button onClick={() => this.removeFromBucketList(this.props.modalData)}>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
-          return true;
+          return (<div><button className="moreDetail__button" onClick={() => this.removeFromBucketList(this.props.modalData)}>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
+          //return true;
         }
       }
 
     }
     //If we get through the entire for loop without finding a match, we
-      //return the option to add the movie/show to user's list
-      return false
-      //return (<div><button onClick={this.postBucketList}>Add</button></div>); // returns false if can't find data in bucketList
+    //return the option to add the movie/show to user's list
+    //return false
+    return (<div><button className="moreDetail__button" onClick={this.postBucketList}>Add</button></div>); // returns false if can't find data in bucketList
   }
 
   postBucketList = () => {
@@ -49,28 +50,44 @@ class SearchItem extends React.Component {
   //for movie data, it uses .title rather than .name for tv format
   renderSpecificItem() {
     let data;
-    if(this.props.details){
+    if (this.props.details) {
       data = this.props.details;
     }
-      return (
-        <div>
-          <h1>{data.title || data.name}</h1>
-          <h3>{data.overview}</h3>
-        </div>
-      )
+    return (
+      <div>
+        <h1>{data.title || data.name}</h1>
+        <p>{data.overview}</p>
+        <p>Released on: {data.first_air_date || data.release_date}</p>
+        <p>Average rating: {data.vote_average}</p>
+      </div>
+    )
   }
 
   render() {
     return (
-        <div className="moreDetail">
-          <Navbar/>
-          {this.renderSpecificItem()}
-          {
-            this.checkIfAdded() ?
-            <button onClick={() => this.removeFromBucketList(this.props.details)}>remove</button> :
-            <button onClick={this.postBucketList}>Add</button>
-          }
+      <div className="moreDetail">
+        <Navbar />
+
+        <div className="moreDetail__layout">
+
+          <div className="moreDetail__img">
+            <img src={`https://image.tmdb.org/t/p/w500${this.props.details.poster_path}`} alt="" />
+          </div>
+
+          <div className="moreDetail__text">
+            {this.renderSpecificItem()}
+
+            <div className="btn-group">
+              {this.checkIfAdded()}
+              <button className="moreDetail__button" onClick={() => this.props.history.push("/search")}>&larr; Back</button>
+            </div>
+
+
+          </div>
+
         </div>
+
+      </div>
     );
   }
 }
@@ -82,4 +99,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default  withRouter(connect(mapStateToProps, actions)(SearchItem));
+export default withRouter(connect(mapStateToProps, actions)(SearchItem));

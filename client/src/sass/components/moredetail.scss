@@ -2,6 +2,48 @@
     background-color: rgb(48, 129, 250);
     background-size: cover;
     min-height: 100vh;
-    height: 100%;
+    //height: 100%;
     color: white;
+    padding: 1rem;
+
+    &__layout{
+        background-color: rgba(36, 90, 172, 0.699);
+        padding: 1rem;
+        //border: 1px solid white;
+        display: flex;
+        @media only screen and (max-width: 850px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__img{
+        img{
+            @media only screen and (max-width: 850px) {
+                height: 50vh;
+            }
+            @media only screen and (max-width: 400px) {
+                height: 30vh;
+            }
+        }
+    }
+
+    &__text{
+        padding: 2rem;
+
+    }
+
+    &__button{
+        border: none;
+        background-color: rgb(65, 90, 204);
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 1rem;
+        transition: .3s all;
+
+        &:hover{
+            background-color: rgb(113, 129, 202);
+        }
+    }
 }
