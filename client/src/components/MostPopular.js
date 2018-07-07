@@ -21,7 +21,8 @@ class MostPopular extends Component {
         this.props.modalDisplay(data);
         //if data format is "TV SHOW", then we can use data.name, if it's "MOVIE", use data.title
         //json has different properties for different formats
-        this.props.history.push('/details/' + (data.name ? data.name.trim() : data.title.trim()));
+        //this.props.fetchByID(data.id, this.props.format);
+        this.props.history.push(`/${this.props.format}/${data.id}`);
     }
 
     tests(data) {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_POPULAR, FETCH_MODAL, FETCH_GENRE_LIST, FETCH_SEARCH_BY_GENRE } from "./types";
+import { FETCH_USER, FETCH_POPULAR, FETCH_MODAL, FETCH_GENRE_LIST, FETCH_SEARCH_BY_GENRE, FETCH_BY_ID } from "./types";
 
 const APIKEY = '508d690fdc412430a70ba8b4d841b0e0';
 
@@ -33,5 +33,14 @@ export const fetchByGenre = (searchTypeFormat, page, genre) => async (dispatch) 
 export const modalDisplay = (data) => async (dispatch) => { //data to be displayed in the modal
     //console.log(data);
     dispatch({ type: FETCH_MODAL, payload: data })
+}
+
+//In the url, format and id will be entered
+//for example: '/format/id'
+export const fetchByID = (id, format) => async (dispatch) => {
+    let url = `https://api.themoviedb.org/3/${format}/${id}?api_key=${APIKEY}&language=en-US`;
+    const res = await axios.get(url);
+    console.log(res.data);
+    dispatch({ type: FETCH_BY_ID, payload: res });
 }
 

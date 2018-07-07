@@ -203,7 +203,11 @@ html, body {
         text-decoration: none; }
 
 .moreDetail {
-  background-color: black; }
+  background-color: #3081fa;
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
+  color: white; }
 
 .navbar .navbar-brand {
   font-size: 2rem;
