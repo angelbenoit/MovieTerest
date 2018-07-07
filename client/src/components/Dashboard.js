@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import { connect } from 'react-redux';
+import * as actions from '../Actions/index';
 
 class Dashboard extends Component {
+
+    componentWillMount(){
+        this.props.fetchUser();
+        //The user data will be updated everytime the dashboard page loads
+        //in order for the bucketList to be updated on time
+    }
 
     renderContent() {
         switch (this.props.auth) {
@@ -70,4 +77,4 @@ function mapStateToProps(state) {
     return { auth: state.auth }
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, actions)(Dashboard);

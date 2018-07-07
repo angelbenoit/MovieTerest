@@ -5,7 +5,7 @@ class Navbar extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark">
-                <NavLink className="navbar-brand" to="/">MovieTerest</NavLink>
+                <NavLink className="navbar-brand" exact to="/">MovieTerest</NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -17,7 +17,7 @@ class Navbar extends Component {
                         <NavLink className="nav-item nav-link" to="/dashboard" exact>
                             <i className="fas fa-tachometer-alt"></i> Dashboard
                         </NavLink>
-                        <NavLink className="nav-item nav-link" to="/search" exact>
+                        <NavLink className="nav-item nav-link" exact to="/search">
                             <i className="fas fa-film"></i> Search
                         </NavLink>
                         <NavLink className="nav-item nav-link" to="/api/logout" exact>
