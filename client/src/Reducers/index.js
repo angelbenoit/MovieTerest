@@ -6,6 +6,7 @@ import searchByGenreReducer from './searchByGenreReducer';
 import { reducer as formReducer } from 'redux-form';
 import modalReducer from './modalReducer';
 import detailsReducer from './moreDetailReducer';
+import updatedListReducer from './updateSearchList';
 
 export default combineReducers({
     auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     genreList: genreListReducer,
     searchByGenre: searchByGenreReducer,
     modalData: modalReducer,
-    details: detailsReducer
+    details: detailsReducer,
+    updatedList: updatedListReducer
 })

@@ -1,9 +1,18 @@
-import { FETCH_POPULAR} from "../Actions/types";
+import { FETCH_POPULAR, RESET_POPULAR } from "../Actions/types";
 
-export default function(state = [], action){
+let initialList = [];
+
+export default function(state = initialList, action){
     switch(action.type){
         case FETCH_POPULAR:
-            return action.payload || false;
+            //return action.payload || false;
+            initialList = initialList.concat(...action.payload.results);
+            //console.log(initialList);
+            return initialList || false;
+
+        case RESET_POPULAR:
+            initialList = [];
+
         default:
             return state;
     }

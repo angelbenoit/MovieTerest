@@ -245,14 +245,19 @@ html, body {
 .movieList {
   display: flex;
   flex-wrap: wrap;
-  padding: 5rem; }
-  .movieList .movie {
-    background: #589bff; }
-    .movieList .movie img {
-      opacity: 0.7;
-      cursor: pointer; }
-      .movieList .movie img:hover {
-        opacity: 1; }
+  padding-left: 7rem;
+  padding-top: 5rem; }
+  @media only screen and (max-width: 500px) {
+    .movieList {
+      padding-left: 15%; } }
+  .movieList .movie img {
+    opacity: 0.7;
+    cursor: pointer; }
+    .movieList .movie img:hover {
+      opacity: 1; }
+    @media only screen and (max-width: 1100px) {
+      .movieList .movie img {
+        height: 20rem; } }
 
 html, body {
   height: 100%; }

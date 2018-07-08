@@ -60,7 +60,7 @@ class MostPopular extends Component {
 
 function mapStateToProps(state) {
     return {
-        popular: state.popular.results,
+        popular: state.popular,
         genre: state.searchByGenre.results
     };
 }

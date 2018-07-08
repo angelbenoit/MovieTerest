@@ -29,6 +29,8 @@ class Search extends Component {
 
     componentDidMount() {
         this.updateData();
+        this.setState({ page: 1, searchTypeFormat: "tv"});
+        this.props.resetPopular();
     }
 
     updateData(){
