@@ -20,7 +20,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
               <Route path='/:format/:id' component={SearchItem} />
-              <Route exact path='/' component={LandingPage} />
+              <Route path='/' component={LandingPage} />
               <Route path='/dashboard' component={Dashboard} />
               <Route path='/search' component={Search} />
           </div>
