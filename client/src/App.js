@@ -19,10 +19,10 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div>
-              <Route path='/:format/:id' component={SearchItem} />
-              <Route path='/' component={LandingPage} />
-              <Route path='/dashboard' component={Dashboard} />
-              <Route path='/search' component={Search} />
+              <Route exact path='/:format/:id' component={SearchItem} />
+              <Route exact path='/' component={LandingPage} />
+              <Route exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/search' component={Search} />
           </div>
         </BrowserRouter>
       </div>
