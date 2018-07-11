@@ -21,7 +21,7 @@ class SearchItem extends React.Component {
       for (let i = 0; i < list.length; i++) {
         if (itemToCompare === list[i].overview) {
           //pass in modal object to be passed in the remove function
-          return (<div><button className="moreDetail__button" onClick={() => this.removeFromBucketList(this.props.modalData)}>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
+          return (<div><button className="moreDetail__button" onClick={() => this.removeFromBucketList(this.props.details)}>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
           //return true;
         }
       }

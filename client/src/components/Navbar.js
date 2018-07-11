@@ -20,9 +20,9 @@ class Navbar extends Component {
                         <NavLink className="nav-item nav-link" exact to="/search">
                             <i className="fas fa-film"></i> Search
                         </NavLink>
-                        <NavLink className="nav-item nav-link" to="/api/logout" exact>
+                        <a className="nav-item nav-link" href="/api/logout" exact>
                         <i className="fas fa-sign-out-alt"></i> Logout
-                        </NavLink>
+                        </a>
                     </div>
                 </div>
             </nav>
