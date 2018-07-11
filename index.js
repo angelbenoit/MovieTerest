@@ -7,13 +7,13 @@ const bodyParser = require('body-parser');
 
 require('./models/User.js');
 require('./services/passport.js');
-mongoose.connect(keys.mongoURI);
+mongoose.connect(key.mongoURI);
 
 const app = express();
 
 app.use(cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    key:['fdfvfgnhrfb']
+    keys:['fdfvfgnhrfb']
 }));
 
 app.use(passport.initialize());
