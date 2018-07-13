@@ -32,7 +32,7 @@ class MostPopular extends Component {
             data.map(item => {
                 if(item && item.poster_path){
                     tempArray.push(
-                        <div key={item.poster_path} className="movie">
+                        <div key={item.id} className="movie">
                                     <img
                                     src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                                     onClick={() => this.displayModal(item)}

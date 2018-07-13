@@ -259,6 +259,16 @@ html, body {
       .movieList .movie img {
         height: 20rem; } }
 
+.loadMore {
+  border: none;
+  padding: 1rem;
+  background-color: #123E81;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 40%;
+  margin-top: 2rem; }
+
 html, body {
   height: 100%; }
 

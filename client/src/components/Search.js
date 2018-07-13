@@ -34,7 +34,7 @@ class Search extends Component {
     }
 
     updateData(){
-        console.log(this.state.genre);
+        //console.log(this.state.genre);
         switch(this.state.searchType){
             case "discover":
                 this.props.fetchPopular(this.state.searchTypeFormat, this.state.page);
@@ -44,23 +44,32 @@ class Search extends Component {
 
     }
 
+    //Function to toggle between movie and tv show format
     formatSelection(format){
+        //should reset list when user switches format
+        this.props.resetPopular();
         this.setState({ searchType: format, showFormatButtons: true}, () => this.updateData());
     }
 
+    //gets the list of genres
     renderGenres(){
         this.props.fetchGenreList(this.state.searchTypeFormat);
         return (<SearchGenres setGenre={this.setGenre}/>);
     }
 
+    //function to pick a search type between "Top Rated" and "Search by Category"
     searchTypeSelection(format){
+        this.props.resetPopular();
         this.setState({ searchTypeFormat: format}, () => this.updateData());
     }
 
     setGenre(id){
+        this.props.resetPopular();
         this.setState({ genre: id}, () => this.updateData());
     }
 
+    //There is a max of 1000 pages, so when user wants to load more data, it'll check
+    //if we're under the 1000th page and will update accordingly
     updateSearch(){
         if(this.state.page <= 1000){
             this.setState(prevState => {
@@ -88,12 +97,14 @@ class Search extends Component {
                     }
 
                 </div>
+                <div className="list">
+                    <MostPopular
+                        searchType={this.state.searchType}
+                        format={this.state.searchTypeFormat}
+                    />
+                </div>
 
-                <MostPopular
-                    searchType={this.state.searchType}
-                    format={this.state.searchTypeFormat}
-                />
-                <button onClick={this.updateSearch}>TEST</button>
+                <button className="loadMore" onClick={this.updateSearch}>Load More</button>
             </div>
         );
     }
