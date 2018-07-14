@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SearchItem from './SearchItem';
 import { connect } from 'react-redux';
 import * as actions from '../Actions/index';
 import { withRouter } from "react-router-dom";

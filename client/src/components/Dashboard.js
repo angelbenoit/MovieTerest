@@ -13,6 +13,7 @@ class Dashboard extends Component {
     }
 
     renderContent() {
+        this.props.fetchUser();
         switch (this.props.auth) {
             case null:
                 return;
@@ -71,7 +72,7 @@ class Dashboard extends Component {
                     <div className="dashboard__content--display">
                         <div className="userListContainer">
                             <ul className="userListContainer__list">
-                                {this.getUserBucketList()}
+                                { this.getUserBucketList() }
                             </ul>
                         </div>
                     </div>

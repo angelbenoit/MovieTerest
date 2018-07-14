@@ -14,13 +14,13 @@ class SearchItem extends React.Component {
   }
 
   checkIfAdded() { //checks if item is already in the bucketList
-    const itemToCompare = this.props.details.overview;
-    //we'll use the modal overview to compare with the overviews in the bucketList
+    const itemToCompare = this.props.details.id;
+    //we'll use the id to compare with the overviews in the bucketList
     if (this.props.auth) {
       const list = this.props.auth.bucketList; //grab bucketlist
       for (let i = 0; i < list.length; i++) {
-        if (itemToCompare === list[i].overview) {
-          //pass in modal object to be passed in the remove function
+        if (itemToCompare === list[i].id) {
+          //pass in object to be passed in the remove function
           return (<div><button className="moreDetail__button" onClick={() => this.removeFromBucketList(this.props.details)}>remove</button></div>); // returns true if overviews are the same, meaning item is already in the bucketList
           //return true;
         }
@@ -36,6 +36,7 @@ class SearchItem extends React.Component {
   postBucketList = () => {
     //add movie/show to bucketlist database using axios post
     axios.post('/api/add_item', this.props.details)
+      .then(this.props.fetchUser())
       .then(this.props.history.push("/search"));
   }
 
@@ -43,6 +44,7 @@ class SearchItem extends React.Component {
     //item to be deleted is pass through parameter and will be redirected to dashboard
     //after deleting
     axios.post('/api/delete_item', item)
+      .then(this.props.fetchUser())
       .then(this.props.history.push("/search"));
   }
 
