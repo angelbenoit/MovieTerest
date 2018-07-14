@@ -141,11 +141,24 @@ html, body {
           width: 100%;
           min-height: 76vh; } }
 
-.list_title {
+.list_item {
   padding: 1rem;
+  width: 100%;
   list-style: none;
   background-color: rgba(47, 75, 112, 0.726);
-  border-bottom: 2px solid rgba(120, 136, 155, 0.801); }
+  border-bottom: 2px solid rgba(120, 136, 155, 0.801);
+  display: flex;
+  justify-content: space-between; }
+  .list_item__delete {
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to left, #fd3e3e, #e66465);
+    color: white;
+    font-weight: bold;
+    transition: all .5s; }
+    .list_item__delete:hover {
+      cursor: pointer;
+      background: linear-gradient(to left, #3e5bfd, #6487e6); }
 
 .landing {
   background: linear-gradient(#123E81, rgba(92, 157, 255, 0.4)), url(../images/landing1.jpg);

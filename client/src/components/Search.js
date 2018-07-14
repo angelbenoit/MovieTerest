@@ -22,6 +22,7 @@ class Search extends Component {
         this.formatSelection = this.formatSelection.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
         this.renderGenres = this.renderGenres.bind(this);
+        this.resetPage = this.resetPage.bind(this);
         this.searchTypeSelection = this.searchTypeSelection.bind(this);
         this.setGenre = this.setGenre.bind(this);
         this.updateData = this.updateData.bind(this);
@@ -48,6 +49,7 @@ class Search extends Component {
     formatSelection(format){
         //should reset list when user switches format
         this.props.resetPopular();
+        this.resetPage();
         this.setState({ searchType: format, showFormatButtons: true}, () => this.updateData());
     }
 
@@ -57,9 +59,14 @@ class Search extends Component {
         return (<SearchGenres setGenre={this.setGenre}/>);
     }
 
+    resetPage(){
+        this.setState({ page: 1}, this.updateData());
+    }
+
     //function to pick a search type between "Top Rated" and "Search by Category"
     searchTypeSelection(format){
         this.props.resetPopular();
+        this.resetPage();
         this.setState({ searchTypeFormat: format}, () => this.updateData());
     }
 
@@ -86,10 +93,8 @@ class Search extends Component {
                     <DefaultSearch
                         formatSelection={this.formatSelection}
                     />
-                    {
-                        this.state.showFormatButtons ?
-                        <FormatButtons searchTypeFormat={this.searchTypeSelection}/> : ""
-                    }
+                    <FormatButtons searchTypeFormat={this.searchTypeSelection}/>
+
                     {
                         this.state.searchType === "genre" ?
                         this.renderGenres() :
