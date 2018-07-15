@@ -72,6 +72,7 @@ class Search extends Component {
 
     setGenre(id){
         this.props.resetPopular();
+        this.resetPage();
         this.setState({ genre: id}, () => this.updateData());
     }
 
@@ -102,7 +103,7 @@ class Search extends Component {
                     }
 
                 </div>
-                <div className="list">
+                <div>
                     <MostPopular
                         searchType={this.state.searchType}
                         format={this.state.searchTypeFormat}

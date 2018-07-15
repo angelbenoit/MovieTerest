@@ -11,7 +11,8 @@ export default function(state = initialList, action){
             return initialList || false;
 
         case RESET_POPULAR:
-            initialList = [];
+            initialList = action.payload;
+            return initialList;
 
         default:
             return state;

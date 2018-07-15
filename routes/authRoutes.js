@@ -29,6 +29,7 @@ module.exports = app => {
             user.bucketList.push(req.body);
             user.save();
         })
+
     });
 
     app.post('/api/delete_item', (req, res) => {

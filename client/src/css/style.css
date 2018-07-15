@@ -152,13 +152,13 @@ html, body {
   .list_item__delete {
     border: none;
     border-radius: 5px;
-    background: linear-gradient(to left, #fd3e3e, #e66465);
+    background: linear-gradient(to left, #3e5bfd, #6487e6);
     color: white;
     font-weight: bold;
     transition: all .5s; }
     .list_item__delete:hover {
       cursor: pointer;
-      background: linear-gradient(to left, #3e5bfd, #6487e6); }
+      background: linear-gradient(to left, #2a3eafb9, #4d66a8c0); }
 
 .landing {
   background: linear-gradient(#123E81, rgba(92, 157, 255, 0.4)), url(../images/landing1.jpg);

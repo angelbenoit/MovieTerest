@@ -36,16 +36,14 @@ class SearchItem extends React.Component {
   postBucketList = () => {
     //add movie/show to bucketlist database using axios post
     axios.post('/api/add_item', this.props.details)
-      .then(this.props.fetchUser())
-      .then(this.props.history.push("/search"));
+      .then(this.props.history.goBack());
   }
 
   removeFromBucketList = (item) => {
     //item to be deleted is pass through parameter and will be redirected to dashboard
     //after deleting
     axios.post('/api/delete_item', item)
-      .then(this.props.fetchUser())
-      .then(this.props.history.push("/search"));
+      .then(this.props.history.goBack());
   }
 
   //The api has different properties for json data depending on format
@@ -61,6 +59,11 @@ class SearchItem extends React.Component {
         <p>{data.overview}</p>
         <p>Released on: {data.first_air_date || data.release_date}</p>
         <p>Average rating: {data.vote_average}</p>
+
+        <div className="btn-group">
+          {this.checkIfAdded()}
+          <button className="moreDetail__button" onClick={() => this.props.history.goBack()}>&larr; Back</button>
+        </div>
       </div>
     )
   }
@@ -78,13 +81,6 @@ class SearchItem extends React.Component {
 
           <div className="moreDetail__text">
             {this.renderSpecificItem()}
-
-            <div className="btn-group">
-              {this.checkIfAdded()}
-              <button className="moreDetail__button" onClick={() => this.props.history.push("/search")}>&larr; Back</button>
-            </div>
-
-
           </div>
 
         </div>

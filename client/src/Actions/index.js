@@ -18,7 +18,7 @@ export const fetchPopular = (searchTypeFormat, page) => async (dispatch) => {
 };
 
 export const resetPopular = () => async (dispatch) => {
-    dispatch({type: RESET_POPULAR});
+    dispatch({type: RESET_POPULAR, payload: []});
 };
 
 export const fetchGenreList = (searchTypeFormat) => async (dispatch) => {

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
-import axios from 'axios';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 import * as actions from '../Actions/index';
 
 class Dashboard extends Component {
-
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchUser();
         //The user data will be updated everytime the dashboard page loads
         //in order for the bucketList to be updated on time
@@ -26,11 +25,8 @@ class Dashboard extends Component {
         }
     }
 
-    removeFromBucketList = (item) => {
-        //item to be deleted is pass through parameter and will be redirected to dashboard
-        //after deleting
-        axios.post('/api/delete_item', item)
-          .then(this.props.fetchUser());
+    redirectToMoreDetails = (item) => {
+          this.props.history.push(`/${item.title ? "movie" : "tv"}/${item.id}`);
       }
 
     getUserBucketList() {
@@ -40,17 +36,17 @@ class Dashboard extends Component {
                 return (
                     <li className="list_item">
                         <p className="list_item__title">{item.name || item.original_title}</p>
-                        <button className="list_item__delete" onClick={() => this.removeFromBucketList(item)}>Delete</button>
+                        <button className="list_item__delete" onClick={() => this.redirectToMoreDetails(item)}>Read More</button>
                     </li>
                 )
             })
         }
+
         return displayList;
     }
 
     render() {
         const userData = this.renderContent();
-        console.log(userData);
         return (
             <div className="dashboard">
                 <Navbar />
@@ -87,4 +83,4 @@ function mapStateToProps(state) {
     return { auth: state.auth }
 }
 
-export default connect(mapStateToProps, actions)(Dashboard);
+export default withRouter(connect(mapStateToProps, actions)(Dashboard));
