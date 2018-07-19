@@ -12,11 +12,22 @@ class SearchPopular extends Component {
             page: 1
         }
         this.getList = this.getList.bind(this);
+        this.loadMore = this.loadMore.bind(this);
     }
+
     componentWillMount() {
-        //console.log(this.props.match.params.format)
         this.props.resetPopular();
         this.props.fetchPopular(this.props.match.params.format, this.state.page);
+    }
+
+    loadMore(){
+        this.setState(prevState => {
+            return {page: prevState.page+1}
+        }, () => this.props.fetchPopular(this.props.match.params.format, this.state.page));
+    }
+
+    seeMore(itemID){
+        this.props.history.push(`/${this.props.match.params.format}/${itemID}`)
     }
 
     getList() {
@@ -27,7 +38,7 @@ class SearchPopular extends Component {
                     <div key={item.id} className="movie">
                         <img
                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
-                            //onClick={() => this.displayModal(item)}
+                            onClick={() => this.seeMore(item.id)}
                         />
                     </div>)
             })
@@ -35,10 +46,11 @@ class SearchPopular extends Component {
     }
 
 render() {
-    let test = this.getList();
+    let renderedData = this.getList();
     return (
         <div>
-            {test}
+            { renderedData }
+            <button onClick={this.loadMore}>Load More</button>
         </div>
     );
 }
@@ -46,8 +58,7 @@ render() {
 
 function mapStateToProps(state) {
     return {
-        popular: state.popular,
-        updatedList: state.displayList
+        popular: state.popular
     };
 }
 

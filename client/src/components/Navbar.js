@@ -15,15 +15,15 @@ class Navbar extends Component {
                             <i className="fas fa-home"></i> Home <span className="sr-only">(current)</span>
                         </NavLink>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i className="fas fa-film"></i> Search
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <NavLink class="dropdown-item" to="/search/movie/popular">Popular Movies</NavLink>
-                                <NavLink class="dropdown-item" to="/search/tv/popular">Popular Television Shows</NavLink>
-                                <NavLink class="dropdown-item" to="/search/movies/genres">Search Movie Genres</NavLink>
-                                <NavLink class="dropdown-item" to="/search/tv/genres">Search Television Show Genres</NavLink>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <NavLink className="dropdown-item" to="/search/movie/popular">Popular Movies</NavLink>
+                                <NavLink className="dropdown-item" to="/search/tv/popular">Popular Television Shows</NavLink>
+                                <NavLink className="dropdown-item" to="/search/movie/genres">Search Movie Genres</NavLink>
+                                <NavLink className="dropdown-item" to="/search/tv/genres">Search Television Show Genres</NavLink>
                             </div>
                         </li>
 

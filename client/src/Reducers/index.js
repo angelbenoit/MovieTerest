@@ -13,6 +13,6 @@ export default combineReducers({
     popular: popularReducer,
     genreList: genreListReducer,
     searchByGenre: searchByGenreReducer,
-    modalData: modalReducer,
+    //modalData: modalReducer,
     details: detailsReducer,
 })
