@@ -23,7 +23,7 @@ class genreSelectionPage extends Component {
             return (
                 <div
                     className={genre.name}
-                    onClick={() => this.updateGenres(genre)}
+                    onClick={() => this.updateGenres(genre.id)}
                     style={this.updateStyle(genre.id)}
                 >
                     {genre.name}
@@ -36,13 +36,28 @@ class genreSelectionPage extends Component {
     updateStyle(genreID){
         for(let i = 0; i < this.state.selectedGenres.length; i++){
             if(this.state.selectedGenres[i] === genreID)
+                //if user picked this genre, give it a pink border
                 return {border: '5px solid pink'};
         }
+        //all non selected genres get a blue border
         return {border: '5px solid blue'};
     }
 
     updateGenres(genre){
-        this.setState({ selectedGenres: this.state.selectedGenres.concat(genre.id)}, () => console.log(this.state.selectedGenres));
+        const indexGenre = this.state.selectedGenres.indexOf(genre);
+        console.log("INDEX OF " + indexGenre)
+        if(indexGenre === -1){
+            //if indexOf function returns -1, it's not in user selected genres array and will be added to it
+            this.setState({ selectedGenres: this.state.selectedGenres.concat(genre)}, () => console.log(this.state.selectedGenres));
+        }
+        else{
+            //user can deselect a highlighted genre by clicking on it and it'll get rid of
+            //the genre in the array and will remove the highlights
+            let temp = this.state.selectedGenres.filter(function(item){
+                return item !== genre;
+            });
+            this.setState({ selectedGenres: temp}, () => console.log(this.state.selectedGenres))
+        }
     }
     render() {
         const genres = this.displayGenreList(this.props.genreList);
