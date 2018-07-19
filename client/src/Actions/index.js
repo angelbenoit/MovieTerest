@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SEARCH_LIST, FETCH_POPULAR, RESET_POPULAR, FETCH_MODAL, FETCH_GENRE_LIST, FETCH_SEARCH_BY_GENRE, FETCH_BY_ID } from "./types";
+import { FETCH_USER, FETCH_POPULAR, RESET_POPULAR, FETCH_MODAL, FETCH_GENRE_LIST, FETCH_SEARCH_BY_GENRE, FETCH_BY_ID } from "./types";
 
 const APIKEY = '508d690fdc412430a70ba8b4d841b0e0';
 
@@ -14,7 +14,8 @@ export const fetchPopular = (searchTypeFormat, page) => async (dispatch) => {
     let url = `https://api.themoviedb.org/3/discover/${searchTypeFormat}?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`;
     //console.log(url);
     const res = await axios.get(url);
-    dispatch({type: FETCH_POPULAR, payload: res.data});
+    //console.log(res.data.results)
+    dispatch({type: FETCH_POPULAR, payload: res.data.results});
 };
 
 export const resetPopular = () => async (dispatch) => {
@@ -47,9 +48,3 @@ export const fetchByID = (id, format) => async (dispatch) => {
     //console.log(res.data);
     dispatch({ type: FETCH_BY_ID, payload: res.data });
 }
-
-export const updateCurrentShowList = (data) => async (dispatch) => { //data to be displayed in the modal
-    //console.log(data);
-    dispatch({ type: FETCH_SEARCH_LIST, payload: data })
-}
-

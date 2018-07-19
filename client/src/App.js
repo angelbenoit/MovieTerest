@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import Search from './components/Search';
+import SearchPopular from './components/SearchPopular';
 import SearchItem from './components/SearchItem';
 import {BrowserRouter,Route} from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -23,6 +24,7 @@ class App extends Component {
               <Route exact path='/' component={LandingPage} />
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/search' component={Search} />
+              <Route exact path='/search/:format/popular' component={SearchPopular} />
           </div>
         </BrowserRouter>
       </div>

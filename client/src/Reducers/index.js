@@ -14,5 +14,5 @@ export default combineReducers({
     genreList: genreListReducer,
     searchByGenre: searchByGenreReducer,
     modalData: modalReducer,
-    details: detailsReducer
+    details: detailsReducer,
 })

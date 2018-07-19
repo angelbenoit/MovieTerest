@@ -14,14 +14,25 @@ class Navbar extends Component {
                         <NavLink className="nav-item nav-link" to="/" exact>
                             <i className="fas fa-home"></i> Home <span className="sr-only">(current)</span>
                         </NavLink>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="fas fa-film"></i> Search
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <NavLink class="dropdown-item" to="/search/movie/popular">Popular Movies</NavLink>
+                                <NavLink class="dropdown-item" to="/search/tv/popular">Popular Television Shows</NavLink>
+                                <NavLink class="dropdown-item" to="/search/movies/genres">Search Movie Genres</NavLink>
+                                <NavLink class="dropdown-item" to="/search/tv/genres">Search Television Show Genres</NavLink>
+                            </div>
+                        </li>
+
                         <NavLink className="nav-item nav-link" to="/dashboard" exact>
                             <i className="fas fa-tachometer-alt"></i> Dashboard
                         </NavLink>
-                        <NavLink className="nav-item nav-link" exact to="/search">
-                            <i className="fas fa-film"></i> Search
-                        </NavLink>
+
                         <a className="nav-item nav-link" href="/api/logout" exact>
-                        <i className="fas fa-sign-out-alt"></i> Logout
+                            <i className="fas fa-sign-out-alt"></i> Logout
                         </a>
                     </div>
                 </div>
