@@ -3,6 +3,7 @@ import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import GenreSelection from './components/genreSelectionPage';
 import Search from './components/Search';
+import SearchByGenre from './components/SearchWithGenres';
 import SearchPopular from './components/SearchPopular';
 import SearchItem from './components/SearchItem';
 import {BrowserRouter,Route} from 'react-router-dom';
@@ -27,6 +28,7 @@ class App extends Component {
               <Route exact path='/search' component={Search} />
               <Route exact path='/search/:format/popular' component={SearchPopular} />
               <Route exact path='/search/:format/genres' component={GenreSelection} />
+              <Route exact path='/searchwithgenre/:format/:genreList' component={SearchByGenre} />
           </div>
         </BrowserRouter>
       </div>

@@ -1,0 +1,20 @@
+.genreItem{
+    background-color: rgba(113, 118, 172, 0.884);
+    font-size: 25px;
+    font-weight: bold;
+    padding: 1rem;
+    width: 30%;
+    text-align: center;
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(114, 120, 187, 0.979);
+    }
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5rem;
+}

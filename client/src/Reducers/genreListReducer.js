@@ -1,9 +1,17 @@
-import { FETCH_GENRE_LIST } from "../Actions/types";
 
-export default function(state = [], action){
+import { FETCH_GENRE_LIST, RESET_POPULAR } from "../Actions/types";
+
+var initialList = [];
+
+export default function(state = initialList, action){
     switch(action.type){
         case FETCH_GENRE_LIST:
-            return action.payload || false;
+            return [...state, ...action.payload];
+
+        case RESET_POPULAR:
+            initialList = [];
+            return initialList;
+
         default:
             return state;
     }

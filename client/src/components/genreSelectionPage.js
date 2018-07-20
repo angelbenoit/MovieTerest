@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import * as actions from '../Actions';
 
 class genreSelectionPage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
             selectedGenres: []
         }
+        this.submitGenres = this.submitGenres.bind(this);
         this.updateGenres = this.updateGenres.bind(this);
         this.updateStyle = this.updateStyle.bind(this);
     }
@@ -18,45 +19,57 @@ class genreSelectionPage extends Component {
         this.props.fetchGenreList(this.props.match.params.format);
     }
 
-    displayGenreList(){
+    displayGenreList() {
         let list = this.props.genreList.map(genre => {
             return (
                 <div
-                    className={genre.name}
+                    className={`${genre.name} genreItem card-body`}
                     onClick={() => this.updateGenres(genre.id)}
                     style={this.updateStyle(genre.id)}
                 >
-                    {genre.name}
+                    <p>{genre.name}</p>
                 </div>
             )
         });
         return list;
     }
 
-    updateStyle(genreID){
-        for(let i = 0; i < this.state.selectedGenres.length; i++){
-            if(this.state.selectedGenres[i] === genreID)
-                //if user picked this genre, give it a pink border
-                return {border: '5px solid pink'};
-        }
-        //all non selected genres get a blue border
-        return {border: '5px solid blue'};
+    submitGenres(){
+        if(this.state.selectedGenres.length > 0)
+            this.props.history.push(`/searchwithgenre/${this.props.match.params.format}/${this.state.selectedGenres}`);
+        else
+            alert("Enter at least one genre");
     }
 
-    updateGenres(genre){
+    updateStyle(genreID) {
+        for (let i = 0; i < this.state.selectedGenres.length; i++) {
+            if (this.state.selectedGenres[i] === genreID)
+                //if user picked this genre, give it a pink border
+                return {
+                    'border': '1px solid rgba(92, 98, 170, 0.979)',
+                    'background-color': 'rgba(92, 96, 138, 0.884)',
+                };
+        }
+        //all non selected genres get a blue border
+        return {
+            'border': '1px solid rgba(114, 120, 187, 0.979)'
+        };
+    }
+
+    updateGenres(genre) {
         const indexGenre = this.state.selectedGenres.indexOf(genre);
         console.log("INDEX OF " + indexGenre)
-        if(indexGenre === -1){
+        if (indexGenre === -1) {
             //if indexOf function returns -1, it's not in user selected genres array and will be added to it
-            this.setState({ selectedGenres: this.state.selectedGenres.concat(genre)}, () => console.log(this.state.selectedGenres));
+            this.setState({ selectedGenres: this.state.selectedGenres.concat(genre) }, () => console.log(this.state.selectedGenres));
         }
-        else{
+        else {
             //user can deselect a highlighted genre by clicking on it and it'll get rid of
             //the genre in the array and will remove the highlights
-            let temp = this.state.selectedGenres.filter(function(item){
+            let temp = this.state.selectedGenres.filter(function (item) {
                 return item !== genre;
             });
-            this.setState({ selectedGenres: temp}, () => console.log(this.state.selectedGenres))
+            this.setState({ selectedGenres: temp }, () => console.log(this.state.selectedGenres))
         }
     }
     render() {
@@ -64,7 +77,11 @@ class genreSelectionPage extends Component {
         //console.log(genres)
         return (
             <div>
-                { genres }
+                <h1>Select genre(s) for {this.props.match.params.format} format</h1>
+                <div className="card">
+                    {genres}
+                </div>
+                <button onClick={this.submitGenres} className="submitGenres">Search</button>
             </div>
         );
     }
