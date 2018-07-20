@@ -9,7 +9,8 @@ class SearchPopular extends Component {
 
         this.state = {
             list: [],
-            page: 1
+            page: 1,
+            searchType: {}
         }
         this.getList = this.getList.bind(this);
         this.loadMore = this.loadMore.bind(this);
@@ -17,23 +18,42 @@ class SearchPopular extends Component {
 
     componentWillMount() {
         this.props.resetPopular();
-        this.props.fetchPopular(this.props.match.params.format, this.state.page);
+
+        if (this.props.match.params.genreList === "none")
+            this.props.fetchPopular(this.props.match.params.format, this.state.page);
+        else
+            this.props.fetchByGenre(this.props.match.params.format, this.state.page, this.props.match.params.genreList);
     }
 
-    loadMore(){
-        this.setState(prevState => {
-            return {page: prevState.page+1}
-        }, () => this.props.fetchPopular(this.props.match.params.format, this.state.page));
+    loadMore() {
+        if (this.props.match.params.genreList === "none") {
+            this.setState(prevState => {
+                return { page: prevState.page + 1 }
+            }, () => this.props.fetchPopular(this.props.match.params.format, this.state.page));
+        }
+        else {
+            this.setState(prevState => {
+                return { page: prevState.page + 1 }
+            }, () => this.props.fetchByGenre(this.props.match.params.format, this.state.page, this.props.match.params.genreList));
+        }
+
     }
 
-    seeMore(itemID){
+    seeMore(itemID) {
         this.props.history.push(`/${this.props.match.params.format}/${itemID}`)
     }
 
     getList() {
         let arr = [];
-        console.log(this.props.popular)
-            arr = this.props.popular.map(item => {
+        let data;
+        if (this.props.match.params.genreList === "none")
+            data = this.props.popular;
+        else
+            data = this.props.searchByGenre;
+
+        console.log(data)
+        arr = data.map(item => {
+            if (item.poster_path !== null) {
                 return (
                     <div key={item.id} className="movie">
                         <img
@@ -41,24 +61,26 @@ class SearchPopular extends Component {
                             onClick={() => this.seeMore(item.id)}
                         />
                     </div>)
-            })
+            }
+        })
         return arr;
     }
 
-render() {
-    let renderedData = this.getList();
-    return (
-        <div>
-            { renderedData }
-            <button onClick={this.loadMore}>Load More</button>
-        </div>
-    );
-}
+    render() {
+        let renderedData = this.getList();
+        return (
+            <div>
+                {renderedData}
+                <button onClick={this.loadMore}>Load More</button>
+            </div>
+        );
+    }
 }
 
 function mapStateToProps(state) {
     return {
-        popular: state.popular
+        popular: state.popular,
+        searchByGenre: state.searchByGenre
     };
 }
 

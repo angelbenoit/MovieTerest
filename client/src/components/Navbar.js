@@ -20,8 +20,8 @@ class Navbar extends Component {
                                 <i className="fas fa-film"></i> Search
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <NavLink className="dropdown-item" to="/search/movie/popular">Popular Movies</NavLink>
-                                <NavLink className="dropdown-item" to="/search/tv/popular">Popular Television Shows</NavLink>
+                                <NavLink className="dropdown-item" to="/search/movie/popular/none">Popular Movies</NavLink>
+                                <NavLink className="dropdown-item" to="/search/tv/popular/none">Popular Television Shows</NavLink>
                                 <NavLink className="dropdown-item" to="/search/movie/genres">Search Movie Genres</NavLink>
                                 <NavLink className="dropdown-item" to="/search/tv/genres">Search Television Show Genres</NavLink>
                             </div>

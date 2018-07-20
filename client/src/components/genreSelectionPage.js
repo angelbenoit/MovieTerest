@@ -35,8 +35,9 @@ class genreSelectionPage extends Component {
     }
 
     submitGenres(){
+        //   /search/movie/popular/none
         if(this.state.selectedGenres.length > 0)
-            this.props.history.push(`/searchwithgenre/${this.props.match.params.format}/${this.state.selectedGenres}`);
+            this.props.history.push(`/search/${this.props.match.params.format}/popular/${this.state.selectedGenres}`);
         else
             alert("Enter at least one genre");
     }
