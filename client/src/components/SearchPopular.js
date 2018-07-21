@@ -14,16 +14,31 @@ class SearchPopular extends Component {
         }
         this.getList = this.getList.bind(this);
         this.loadMore = this.loadMore.bind(this);
+        this.renderTopRatedData = this.renderTopRatedData.bind(this);
     }
 
     componentWillMount() {
-        this.props.resetPopular();
-
-        if (this.props.match.params.genreList === "none")
-            this.props.fetchPopular(this.props.match.params.format, this.state.page);
-        else
-            this.props.fetchByGenre(this.props.match.params.format, this.state.page, this.props.match.params.genreList);
+        this.renderTopRatedData(this.props.match.params.format);
     }
+
+    renderTopRatedData(format){
+        this.props.resetPopular();
+        //this.setState({ page: 1}, () => alert("RESETIGN PAGE TO 1"));
+        if (this.props.match.params.genreList === "none"){
+            this.props.fetchPopular(format, 1);
+        }
+        else{
+            this.props.fetchByGenre(format, 1, this.props.match.params.genreList);
+
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.match.params.format !== this.props.match.params.format) {
+          //console.log(nextProps);
+            this.renderTopRatedData(nextProps.match.params.format);
+        }
+      }
 
     loadMore() {
         if (this.props.match.params.genreList === "none") {
@@ -69,7 +84,7 @@ class SearchPopular extends Component {
     render() {
         let renderedData = this.getList();
         return (
-            <div>
+            <div className="search">
                 {renderedData}
                 <button onClick={this.loadMore}>Load More</button>
             </div>

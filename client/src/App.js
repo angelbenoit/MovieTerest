@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import GenreSelection from './components/genreSelectionPage';
-import Search from './components/Search';
+import Navbar from './components/Navbar';
 import SearchPopular from './components/SearchPopular';
 import SearchItem from './components/SearchItem';
 import {BrowserRouter,Route} from 'react-router-dom';
@@ -21,10 +21,10 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div>
+              <Navbar/>
               <Route exact path='/:format/:id' component={SearchItem} />
               <Route exact path='/' component={LandingPage} />
               <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/search' component={Search} />
               <Route exact path='/search/:format/popular/:genreList' component={SearchPopular} />
               <Route exact path='/search/:format/genres' component={GenreSelection} />
           </div>
