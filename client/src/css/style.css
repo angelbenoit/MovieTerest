@@ -72,7 +72,7 @@ html, body {
 
 .dashboard {
   min-height: 60vh;
-  background-color: #0e3b7e;
+  background-color: #008793;
   color: white; }
   .dashboard__content {
     display: flex;
@@ -81,7 +81,7 @@ html, body {
       .dashboard__content {
         flex-direction: column; } }
     .dashboard__content--navigation {
-      background: linear-gradient(to bottom, #0E3B7E, #336ec7, #90b7f1);
+      background: #008793;
       background-repeat: no-repeat;
       background-size: cover;
       display: flex;
@@ -100,16 +100,17 @@ html, body {
         display: flex;
         flex-direction: column;
         border-radius: 5px;
-        background-color: #1a4a91;
-        box-shadow: 4px 5px 3px #1c1a8b; }
+        background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.75); }
         @media only screen and (max-width: 600px) {
           .dashboard__content--navigation .side-nav {
             flex-direction: row; } }
         .dashboard__content--navigation .side-nav__link {
           color: white;
           padding: 2rem;
+          font-weight: bold;
           width: 100%;
-          border-top: 1px solid #4d87df; }
+          border-top: 1px solid #a8eb12; }
           @media only screen and (max-width: 600px) {
             .dashboard__content--navigation .side-nav__link {
               padding: 1rem; } }
@@ -121,7 +122,7 @@ html, body {
       flex-direction: column;
       padding: 2rem;
       width: 70%;
-      background: linear-gradient(rgba(77, 135, 223, 0.63), rgba(22, 58, 105, 0.582)), url(../images/tvpicture.jpeg);
+      background: linear-gradient(to left top, #05193742, #004d7a59, #00879394, #00bf73af, #a6eb12cc), url(../images/tvpicture.jpeg);
       background-size: cover;
       background-position: left; }
       @media only screen and (max-width: 600px) {
@@ -133,40 +134,59 @@ html, body {
   padding: 1rem;
   width: 100%;
   list-style: none;
-  background-color: rgba(47, 75, 112, 0.726);
-  border-bottom: 2px solid rgba(120, 136, 155, 0.801);
+  background-color: #004d7a59;
+  border-bottom: 2px solid #00bf73af;
   display: flex;
   justify-content: space-between; }
   .list_item__delete {
     border: none;
     border-radius: 5px;
-    background: linear-gradient(to left, #3e5bfd, #6487e6);
+    background: linear-gradient(to left, #00bf73af, #a6eb12cc);
     color: white;
     font-weight: bold;
     transition: all .5s; }
     .list_item__delete:hover {
       cursor: pointer;
-      background: linear-gradient(to left, #2a3eafb9, #4b65aac0); }
+      background: linear-gradient(to left, #004d7a59, #4b65aac0); }
 
 .App {
   background-image: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12); }
 
+.genrePage {
+  min-height: 100vh; }
+
 .genreItem {
-  background-color: rgba(113, 118, 172, 0.884);
+  color: white;
+  font-weight: bold;
+  background-color: #00bf73c7;
+  border: none;
   font-size: 25px;
   font-weight: bold;
   padding: 1rem;
   width: 30%;
   text-align: center; }
+  @media only screen and (max-width: 600px) {
+    .genreItem {
+      font-size: 1rem;
+      padding: 0rem;
+      width: 100%; } }
   .genreItem:hover {
     cursor: pointer;
-    background-color: rgba(114, 120, 187, 0.979); }
+    background-color: #004d7a; }
 
 .card {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 5rem; }
+  padding: 3rem;
+  background-color: #008793;
+  box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.75); }
+  @media only screen and (max-width: 420px) {
+    .card {
+      flex-direction: column; } }
+
+.selectionContainer {
+  padding: 3rem; }
 
 .landing {
   background: linear-gradient(to left top, #0519378c, #004d7a91, #0087938c, #00bf738e, #008793ce, #00bf73a8, #a6eb12), url(../images/landing1.jpg);
@@ -215,13 +235,13 @@ html, body {
         text-decoration: none; }
 
 .moreDetail {
-  background-color: #3081fa;
+  background-color: #051937;
   background-size: cover;
   min-height: 100vh;
   color: white;
   padding: 1rem; }
   .moreDetail__layout {
-    background-color: rgba(36, 90, 172, 0.699);
+    background-color: #00bf738c;
     padding: 1rem;
     display: flex; }
     @media only screen and (max-width: 850px) {
@@ -238,14 +258,14 @@ html, body {
     padding: 2rem; }
   .moreDetail__button {
     border: none;
-    background-color: #415acc;
+    background-color: #008793;
     color: white;
     cursor: pointer;
     font-weight: bold;
     padding: 1rem;
     transition: .3s all; }
     .moreDetail__button:hover {
-      background-color: #7181ca; }
+      background-color: #a8eb12; }
 
 .navbar .navbar-brand {
   font-size: 2rem;

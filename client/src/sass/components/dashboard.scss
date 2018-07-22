@@ -1,6 +1,6 @@
 .dashboard{
     min-height: 60vh;
-    background-color: rgb(14, 59, 126);
+    background-color: #008793;
     color: white;
 
     &__content{
@@ -12,8 +12,7 @@
         }
 
         &--navigation{
-            background: linear-gradient(
-                        to bottom, #0E3B7E, rgb(51, 110, 199), rgb(144, 183, 241));
+            background: #008793;
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
@@ -35,8 +34,8 @@
                 display: flex;
                 flex-direction: column;
                 border-radius: 5px;
-                background-color: rgb(26, 74, 145);
-                box-shadow: 4px 5px 3px #1c1a8b;
+                background-image: linear-gradient(to right top, $linear-color);
+                box-shadow: $shadow;
 
                 @media only screen and (max-width: 600px) {
                     flex-direction: row;
@@ -45,8 +44,9 @@
                 &__link{
                     color: white;
                     padding: 2rem;
+                    font-weight: bold;
                     width: 100%;
-                    border-top: 1px solid rgb(77, 135, 223);
+                    border-top: 1px solid #a8eb12;
 
                     @media only screen and (max-width: 600px) {
                         padding: 1rem;
@@ -61,15 +61,13 @@
         }
 
         &--display{
-            //border: 2px solid yellow;
             display: flex;
             flex-direction: column;
             padding: 2rem;
             width: 70%;
-            background: linear-gradient(
-                        rgba(77, 135, 223, 0.63),
-                        rgba(22, 58, 105, 0.582)
-                        ),
+            background: linear-gradient(to left top, #05193742,
+                                        #004d7a59, #00879394,
+                                        #00bf73af, #a6eb12cc),
                         url(../images/tvpicture.jpeg);
             background-size: cover;
             background-position: left;
@@ -86,8 +84,8 @@
     padding: 1rem;
     width: 100%;
     list-style: none;
-    background-color: rgba(47, 75, 112, 0.726);
-    border-bottom: 2px solid rgba(120, 136, 155, 0.801);
+    background-color: #004d7a59;
+    border-bottom: 2px solid #00bf73af;
     display: flex;
     justify-content: space-between;
 
@@ -98,14 +96,14 @@
     &__delete{
         border: none;
         border-radius: 5px;
-        background: linear-gradient(to left,#3e5bfd, #6487e6);
+        background: linear-gradient(to left,#00bf73af, #a6eb12cc);
         color: white;
         font-weight: bold;
         transition: all .5s;
 
         &:hover{
             cursor: pointer;
-            background: linear-gradient(to left,#2a3eafb9, #4b65aac0);
+            background: linear-gradient(to left,#004d7a59, #4b65aac0);
         }
     }
 }

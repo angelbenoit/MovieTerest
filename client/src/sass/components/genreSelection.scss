@@ -1,14 +1,27 @@
+.genrePage{
+    min-height: 100vh;
+}
+
 .genreItem{
-    background-color: rgba(113, 118, 172, 0.884);
+    color: white;
+    font-weight: bold;
+    background-color: #00bf73c7;
+    border: none;
     font-size: 25px;
     font-weight: bold;
     padding: 1rem;
     width: 30%;
     text-align: center;
 
+    @media only screen and (max-width: 600px) {
+        font-size: 1rem;
+        padding: 0rem;
+        width: 100%;
+    }
+
     &:hover{
         cursor: pointer;
-        background-color: rgba(114, 120, 187, 0.979);
+        background-color: #004d7a;
     }
 }
 
@@ -16,5 +29,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 5rem;
+    padding: 3rem;
+    background-color: #008793;
+    box-shadow: $shadow;
+    @media only screen and (max-width: 420px) {
+        flex-direction: column;
+    }
+}
+
+.selectionContainer{
+    padding: 3rem;
 }

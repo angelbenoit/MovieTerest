@@ -19,18 +19,18 @@ class genreSelectionPage extends Component {
         this.props.fetchGenreList(this.props.match.params.format);
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.match.params.format !== this.props.match.params.format) {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.match.params.format !== this.props.match.params.format) {
             this.props.resetGenreList();
             this.props.fetchGenreList(nextProps.match.params.format);
         }
-      }
+    }
 
     displayGenreList() {
         let list = this.props.genreList.map(genre => {
             return (
                 <div
-                    className={`${genre.name} genreItem card-body`}
+                    className={`${genre.name} genreItem`}
                     onClick={() => this.updateGenres(genre.id)}
                     style={this.updateStyle(genre.id)}
                 >
@@ -41,9 +41,9 @@ class genreSelectionPage extends Component {
         return list;
     }
 
-    submitGenres(){
+    submitGenres() {
         //   /search/movie/popular/none
-        if(this.state.selectedGenres.length > 0)
+        if (this.state.selectedGenres.length > 0)
             this.props.history.push(`/search/${this.props.match.params.format}/popular/${this.state.selectedGenres}`);
         else
             alert("Enter at least one genre");
@@ -54,14 +54,9 @@ class genreSelectionPage extends Component {
             if (this.state.selectedGenres[i] === genreID)
                 //if user picked this genre, give it a pink border
                 return {
-                    'border': '1px solid rgba(92, 98, 170, 0.979)',
-                    'background-color': 'rgba(92, 96, 138, 0.884)',
+                    'background-color': '#004d7a',
                 };
         }
-        //all non selected genres get a blue border
-        return {
-            'border': '1px solid rgba(114, 120, 187, 0.979)'
-        };
     }
 
     updateGenres(genre) {
@@ -84,12 +79,17 @@ class genreSelectionPage extends Component {
         const genres = this.displayGenreList(this.props.genreList);
         //console.log(genres)
         return (
-            <div>
+            <div className="genrePage">
                 <h1>Select genre(s) for {this.props.match.params.format} format</h1>
-                <div className="card">
-                    {genres}
+                <div className="selectionContainer">
+                    <div className="card">
+                        {genres}
+                    </div>
+                    <div className="loadMorePos">
+                        <button onClick={this.submitGenres} className="linearButton">Search</button>
+                    </div>
                 </div>
-                <button onClick={this.submitGenres} className="submitGenres">Search</button>
+
             </div>
         );
     }
