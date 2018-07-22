@@ -103,8 +103,10 @@ class SearchPopular extends Component {
                     <div className="search__list">
                         {renderedData}
                     </div>
+                    <div className="loadMorePos">
+                        <button className="linearButton" onClick={this.loadMore}>Load More</button>
+                    </div>
                 </div>
-                <button onClick={this.loadMore}>Load More</button>
             </div>
         );
     }

@@ -5,13 +5,16 @@ html, body {
 .search {
   min-height: 100vh; }
   .search__container {
-    padding: 5rem; }
+    padding: 4rem; }
+    @media only screen and (max-width: 380px) {
+      .search__container {
+        padding: 1rem; } }
   .search__list {
     display: flex;
     flex-wrap: wrap;
     border-radius: 5px;
-    justify-content: space-between;
-    padding: 1rem;
+    justify-content: space-around;
+    padding: 3rem;
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.75); }
     .search__list .item_poster {
@@ -21,6 +24,9 @@ html, body {
       cursor: pointer; }
     .search__list img {
       display: block; }
+      @media only screen and (max-width: 1172px) {
+        .search__list img {
+          height: 15rem; } }
     .search__list .overlay {
       position: absolute;
       top: 0;
@@ -31,7 +37,7 @@ html, body {
       width: 100%;
       opacity: 0;
       transition: .5s ease;
-      background-image: linear-gradient(to left top, #051937, #008793, #00bf72, #a8eb12); }
+      background-image: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12); }
     .search__list .text-hover:hover .overlay {
       opacity: 1; }
     .search__list .text {
@@ -44,6 +50,25 @@ html, body {
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       text-align: center; }
+      @media only screen and (max-width: 1172px) {
+        .search__list .text {
+          font-size: 1rem; } }
+
+.linearButton {
+  background-image: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  padding: 1rem;
+  box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.75);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: none; }
+  .linearButton:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12); }
+
+.loadMorePos {
+  padding-left: 15%;
+  padding-top: 2rem; }
 
 .dashboard {
   min-height: 60vh;
