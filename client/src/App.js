@@ -16,12 +16,25 @@ class App extends Component {
         this.props.fetchUser();
     }
 
+    renderContent() {
+      switch (this.props.auth) {
+          case null:
+              return;
+
+          case false:
+              return false; // returns false if not logged in
+
+          default:
+              return true; // returns true if user is logged in
+      }
+  }
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <div>
-              <Navbar/>
+              {this.renderContent() ? <Navbar /> : ""}
               <Route exact path='/:format/:id' component={SearchItem} />
               <Route exact path='/' component={LandingPage} />
               <Route exact path='/dashboard' component={Dashboard} />
@@ -34,4 +47,9 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+function mapStateToProps(state) {
+  return { auth: state.auth }
+}
+
+
+export default connect(mapStateToProps, actions)(App);

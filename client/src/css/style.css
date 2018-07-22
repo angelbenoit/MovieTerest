@@ -2,91 +2,51 @@ html, body {
   font-family: 'Shadows Into Light', cursive;
   letter-spacing: 2px; }
 
-.search-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Shadows Into Light', cursive; }
-  @media only screen and (max-width: 600px) {
-    .search-buttons {
-      align-items: inherit; } }
-  .search-buttons__group {
-    background-color: #134083;
-    border: none;
-    padding: 1rem;
-    color: white;
-    font-weight: 800;
-    font-size: 1.3rem;
-    border-bottom: 2px solid white;
-    cursor: pointer;
-    transition: all .5s; }
-    .search-buttons__group:nth-child(2) {
-      border-left: 2px solid white;
-      border-right: 2px solid white; }
-    .search-buttons__group:hover {
-      background-color: #3B73C8; }
-    @media only screen and (max-width: 600px) {
-      .search-buttons__group {
-        display: flex;
-        flex-direction: column;
-        font-size: 1.15rem;
-        padding: .5rem;
-        width: 100%;
-        border: none; } }
-  .search-buttons__format {
-    margin-top: 1rem;
-    border: none;
-    background-color: #3B73C8;
-    font-size: 1.15rem;
-    padding: .5rem;
-    font-weight: 800;
-    color: white;
-    cursor: pointer;
-    border-bottom: 2px solid white;
-    transition: all .5s; }
-    .search-buttons__format:nth-child(2) {
-      border-left: 2px solid white; }
-    .search-buttons__format:hover {
-      background-color: #134083; }
-    @media only screen and (max-width: 600px) {
-      .search-buttons__format {
-        display: flex;
-        flex-direction: column;
-        margin-top: 0;
-        width: 100%;
-        border: none; } }
-
-.genre_item {
-  color: white;
-  padding: 1rem;
-  background-color: #134da3;
-  cursor: pointer;
-  font-weight: 800;
-  transition: all .5s; }
-  .genre_item:not(:last-child) {
-    border-right: 1px solid white; }
-  .genre_item:hover {
-    background-color: #3B73C8; }
-
-.genre_list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 50%;
-  margin-top: 1.5rem; }
-  @media only screen and (max-width: 600px) {
-    .genre_list {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      border: none;
-      margin-top: 0; } }
-
 .search {
   min-height: 100vh; }
+  .search__container {
+    padding: 5rem; }
+  .search__list {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    justify-content: space-between;
+    padding: 1rem;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.75); }
+    .search__list .item_poster {
+      box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.75); }
+    .search__list .text-hover {
+      position: relative;
+      cursor: pointer; }
+    .search__list img {
+      display: block; }
+    .search__list .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-image: linear-gradient(to left top, #051937, #008793, #00bf72, #a8eb12); }
+    .search__list .text-hover:hover .overlay {
+      opacity: 1; }
+    .search__list .text {
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center; }
 
 .dashboard {
-  min-height: 100vh;
+  min-height: 60vh;
   background-color: #0e3b7e;
   color: white; }
   .dashboard__content {
@@ -164,7 +124,7 @@ html, body {
       background: linear-gradient(to left, #2a3eafb9, #4b65aac0); }
 
 .App {
-  background-color: grey; }
+  background-image: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12); }
 
 .genreItem {
   background-color: rgba(113, 118, 172, 0.884);
@@ -184,7 +144,7 @@ html, body {
   padding: 5rem; }
 
 .landing {
-  background: linear-gradient(#123E81, rgba(92, 157, 255, 0.4)), url(../images/landing1.jpg);
+  background: linear-gradient(to left top, #0519378c, #004d7a91, #0087938c, #00bf738e, #008793ce, #00bf73a8, #a6eb12), url(../images/landing1.jpg);
   height: 100vh;
   background-size: cover;
   background-position: center; }

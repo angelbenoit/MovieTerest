@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import * as actions from '../Actions/index';
@@ -71,7 +70,6 @@ class SearchItem extends React.Component {
   render() {
     return (
       <div className="moreDetail">
-        <Navbar />
 
         <div className="moreDetail__layout">
 

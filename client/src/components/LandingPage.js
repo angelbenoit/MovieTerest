@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
 import { connect } from 'react-redux';
 
 class LandingPage extends Component {
@@ -20,7 +19,7 @@ class LandingPage extends Component {
     render() {
         return (
             <div className="landing">
-                {this.renderContent() ? <Navbar /> : ""}
+
                 <div className="landing__text">
                     <p className="landing__text--title animated slideInLeft">
                         <i className="fas fa-tv"></i>&nbsp;MovieTerest

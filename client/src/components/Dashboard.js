@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import * as actions from '../Actions/index';
@@ -49,7 +48,6 @@ class Dashboard extends Component {
         const userData = this.renderContent();
         return (
             <div className="dashboard">
-                <Navbar />
                 <div className="dashboard__content">
                     <div className="dashboard__content--navigation">
 

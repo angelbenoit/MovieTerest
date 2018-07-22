@@ -15,9 +15,16 @@ class genreSelectionPage extends Component {
         this.updateStyle = this.updateStyle.bind(this);
     }
     componentWillMount() {
-        this.props.resetPopular();
+        this.props.resetGenreList();
         this.props.fetchGenreList(this.props.match.params.format);
     }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.match.params.format !== this.props.match.params.format) {
+            this.props.resetGenreList();
+            this.props.fetchGenreList(nextProps.match.params.format);
+        }
+      }
 
     displayGenreList() {
         let list = this.props.genreList.map(genre => {

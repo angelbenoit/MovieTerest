@@ -21,24 +21,30 @@ class SearchPopular extends Component {
         this.renderTopRatedData(this.props.match.params.format);
     }
 
-    renderTopRatedData(format){
+    renderTopRatedData(format) {
         this.props.resetPopular();
-        //this.setState({ page: 1}, () => alert("RESETIGN PAGE TO 1"));
-        if (this.props.match.params.genreList === "none"){
+        if (this.props.match.params.genreList === "none") {
             this.props.fetchPopular(format, 1);
         }
-        else{
+        else {
             this.props.fetchByGenre(format, 1, this.props.match.params.genreList);
 
         }
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.match.params.format !== this.props.match.params.format) {
-          //console.log(nextProps);
+    componentWillReceiveProps(nextProps) {
+
+        if (nextProps.match.params.genreList !== this.props.match.params.genreList) {
+            window.location.reload();
+            //Bug when doing a search by genre to just doing a regular search,
+            //items won't show up on screen, so window will reload page if this is done
             this.renderTopRatedData(nextProps.match.params.format);
         }
-      }
+
+        else if (nextProps.match.params.format !== this.props.match.params.format) {
+            this.renderTopRatedData(nextProps.match.params.format);
+        }
+    }
 
     loadMore() {
         if (this.props.match.params.genreList === "none") {
@@ -70,12 +76,20 @@ class SearchPopular extends Component {
         arr = data.map(item => {
             if (item.poster_path !== null) {
                 return (
-                    <div key={item.id} className="movie">
+                    <div className="text-hover">
                         <img
+                            className="item_poster"
                             src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
-                            onClick={() => this.seeMore(item.id)}
+                        //onClick={() => this.seeMore(item.id)}
                         />
-                    </div>)
+                        <div
+                            class="overlay"
+                            onClick={() => this.seeMore(item.id)}
+                        >
+                            <div class="text">{item.name || item.title}</div>
+                        </div>
+                    </div>
+                )
             }
         })
         return arr;
@@ -85,7 +99,11 @@ class SearchPopular extends Component {
         let renderedData = this.getList();
         return (
             <div className="search">
-                {renderedData}
+                <div className="search__container">
+                    <div className="search__list">
+                        {renderedData}
+                    </div>
+                </div>
                 <button onClick={this.loadMore}>Load More</button>
             </div>
         );

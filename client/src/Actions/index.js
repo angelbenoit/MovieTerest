@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_POPULAR, RESET_POPULAR, FETCH_MODAL, FETCH_GENRE_LIST, FETCH_SEARCH_BY_GENRE, FETCH_BY_ID } from "./types";
+import { FETCH_USER, FETCH_POPULAR,
+         RESET_POPULAR, FETCH_MODAL,
+         FETCH_GENRE_LIST, FETCH_SEARCH_BY_GENRE,
+         FETCH_BY_ID, RESET_GENRE_LIST } from "./types";
 
 const APIKEY = '508d690fdc412430a70ba8b4d841b0e0';
 
@@ -24,9 +27,14 @@ export const resetPopular = () => async (dispatch) => {
 
 export const fetchGenreList = (searchTypeFormat) => async (dispatch) => {
     let url = `https://api.themoviedb.org/3/genre/${searchTypeFormat}/list?api_key=${APIKEY}&language=en-US`;
-    console.log(url)
+    //console.log(url)
     const res = await axios.get(url);
     dispatch({type: FETCH_GENRE_LIST, payload: res.data.genres});
+};
+
+export const resetGenreList = () => async (dispatch) => {
+    console.log("Reseting genre list");
+    dispatch({type: RESET_GENRE_LIST, payload: []});
 };
 
 export const fetchByGenre = (searchTypeFormat, page, genre) => async (dispatch) => {

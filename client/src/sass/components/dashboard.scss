@@ -1,5 +1,5 @@
 .dashboard{
-    min-height: 100vh;
+    min-height: 60vh;
     background-color: rgb(14, 59, 126);
     color: white;
 
@@ -111,5 +111,8 @@
 }
 
 .App{
-    background-color: grey;
+    background-image: linear-gradient(
+        to left top, #051937,
+        #004d7a, #008793,
+        #00bf72, #a8eb12);
 }

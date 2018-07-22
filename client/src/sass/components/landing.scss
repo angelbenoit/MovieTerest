@@ -1,8 +1,14 @@
 .landing{
-    background: linear-gradient(
-        #123E81,
-        rgba(92, 157, 255, .4)
+    background: linear-gradient(to left top,
+        #0519378c, #004d7a91,
+        #0087938c, #00bf738e,
+        #008793ce, #00bf73a8, #a6eb12
       ), url(../images/landing1.jpg);
+
+    //   background-image: linear-gradient(to right bottom,
+    //                 #051937, #004d7a,
+    //                 #008793, #00bf72
+    //                 , #a8eb12), url(../images/landing1.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;
