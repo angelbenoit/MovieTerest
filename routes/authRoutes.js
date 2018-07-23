@@ -24,16 +24,16 @@ module.exports = app => {
     });
 
     app.post('/api/add_item', (req, res) => {
+        console.log("ADDING: " + req.body.name);
         //push item passed in from postBucketList function into the bucketList
         User.findById(req.user._id, function(err, user){
             user.bucketList.push(req.body);
             user.save();
         })
-
     });
 
     app.post('/api/delete_item', (req, res) => {
-        //console.log(req.body);
+        console.log("REMOVING: " + req.body.homepage);
         User.findById(req.user._id, function(err, user){
             //filter every item in the bucketList and if item is not equal
             //to the item passed in remove function from displayModal, don't include it in
