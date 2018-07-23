@@ -104,7 +104,8 @@ html, body {
         box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.75); }
         @media only screen and (max-width: 600px) {
           .dashboard__content--navigation .side-nav {
-            flex-direction: row; } }
+            flex-direction: row;
+            width: 100%; } }
         .dashboard__content--navigation .side-nav__link {
           color: white;
           padding: 2rem;
