@@ -22,7 +22,6 @@ class Dashboard extends Component {
     }
 
     renderContent() {
-        this.props.fetchUser();
         switch (this.props.auth) {
             case null:
                 return;
