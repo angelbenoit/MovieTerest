@@ -1,7 +1,6 @@
 const jwt = require('jwt-simple');
 const User = require('../models/User');
 const config = require('../config');
-const uuid = require("uuid");
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
@@ -40,8 +39,8 @@ exports.signup = function(req, res, next) {
     // If a user with email does NOT exist, create and save user record
     const user = new User({
       email: email,
-      password: password,
-      authorId: uuid()
+      username: email,
+      password: password
     });
 
     user.save(function(err) {
