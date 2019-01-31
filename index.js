@@ -4,6 +4,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const key = require('./config/key.js');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const cors = require('cors');
 
 require('./models/User.js');
 require('./services/passport.js');
@@ -16,6 +18,8 @@ app.use(cookieSession({
     keys:['fdfvfgnhrfb']
 }));
 
+app.use(morgan('combined'));
+app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser());

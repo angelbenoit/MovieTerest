@@ -8,7 +8,7 @@
     "npm": "5.5.1"
   },
   "scripts": {
-    "start":  "node index.js",
+    "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "sass-compile": "npm run compile:sass --prefix client",
@@ -20,16 +20,22 @@
   "dependencies": {
     "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.5",
     "express": "^4.16.2",
+    "jwt-simple": "^0.5.5",
     "mongoose": "^5.0.1",
+    "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "react-modal": "^3.4.5",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
-    "scss-compile": "^0.1.7"
+    "scss-compile": "^0.1.7",
+    "uuid": "^3.3.2"
   }
 }
