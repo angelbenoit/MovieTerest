@@ -5,6 +5,8 @@ import GenreSelection from './components/genreSelectionPage';
 import Navbar from './components/Navbar';
 import SearchPopular from './components/SearchPopular';
 import SearchItem from './components/SearchItem';
+import Signup from './components/auth/Signup';
+import Signin from './components/auth/Signin';
 import {BrowserRouter,Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './Actions';
@@ -38,6 +40,8 @@ class App extends Component {
               <Route exact path='/:format/:id' component={SearchItem} />
               <Route exact path='/' component={LandingPage} />
               <Route exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/signup' component={Signup} />
+              <Route exact path='/signin' component={Signin} />
               <Route exact path='/search/:format/popular/:genreList' component={SearchPopular} />
               <Route exact path='/search/:format/genres' component={GenreSelection} />
           </div>
