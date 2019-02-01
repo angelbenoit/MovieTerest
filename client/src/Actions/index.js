@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_POPULAR,
+import { FETCH_USER, AUTH_USER, FETCH_POPULAR,
          RESET_POPULAR, FETCH_MODAL,
          FETCH_GENRE_LIST, FETCH_SEARCH_BY_GENRE,
-         FETCH_BY_ID, RESET_GENRE_LIST } from "./types";
+         FETCH_BY_ID, RESET_GENRE_LIST, FETCH_ERROR } from "./types";
 
 const APIKEY = '508d690fdc412430a70ba8b4d841b0e0';
 
 export const fetchUser = () => async (dispatch) => {
-    const res = await axios.get("/api/current_user");
-    //console.log(res.data);
+    const res = await axios.get("/api/current_user", {headers: {authorization: localStorage.getItem("token")}});
     dispatch({type: FETCH_USER, payload: res.data});
 };
 // searchType is what type of search being done, if it is "discover"(intial), then it returns most popular
@@ -57,3 +56,34 @@ export const fetchByID = (id, format) => async (dispatch) => {
     //console.log(res.data);
     dispatch({ type: FETCH_BY_ID, payload: res.data });
 }
+
+export const signup = (formProps, callback) => async dispatch => {
+    console.log(formProps);
+    try {
+      const response = await axios.post(
+        '/api/signup',
+        formProps
+      );
+
+      dispatch({ type: AUTH_USER, payload: response.data.token });
+      localStorage.setItem('token', response.data.token);
+      callback();
+    } catch (e) {
+      dispatch({ type: FETCH_ERROR, payload: 'Email in use' });
+    }
+  };
+
+  export const signin = (formProps, callback) => async dispatch => {
+    try {
+      const response = await axios.post(
+        '/api/signin',
+        formProps
+      );
+      //console.log(response.data.token)
+      dispatch({ type: AUTH_USER, payload: response.data.token });
+      localStorage.setItem('token', response.data.token);
+      callback();
+    } catch (e) {
+      dispatch({ type: FETCH_ERROR, payload: 'Invalid login credentials' });
+    }
+  };

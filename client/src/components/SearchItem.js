@@ -15,7 +15,7 @@ class SearchItem extends React.Component {
   checkIfAdded() { //checks if item is already in the bucketList
     const itemToCompare = this.props.details.id;
     //we'll use the id to compare with the overviews in the bucketList
-    if (this.props.auth) {
+    if (this.props.auth && this.props.auth.bucketList) {
       const list = this.props.auth.bucketList; //grab bucketlist
       for (let i = 0; i < list.length; i++) {
         if (itemToCompare === list[i].id) {
@@ -34,8 +34,15 @@ class SearchItem extends React.Component {
 
   postBucketList = () => {
     //add movie/show to bucketlist database using axios post
-    axios.post('/api/add_item', this.props.details)
-      .then(window.location.reload());
+    console.log("POSTING ITEM")
+    axios({
+      method: "post",
+      url: "/api/add_item",
+      headers: {authorization: localStorage.getItem("token")},
+      data: this.props.details
+    }).then(window.location.reload());
+    // axios.post('/api/add_item', this.props.details)
+    //   .then(window.location.reload());
   }
 
   removeFromBucketList = (item) => {

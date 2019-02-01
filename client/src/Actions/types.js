@@ -1,5 +1,6 @@
 export const FETCH_USER = 'fetch_user';
 export const FETCH_ERROR = 'fetch_error';
+export const AUTH_USER = 'auth_user';
 export const FETCH_POPULAR = 'fetch_popular';
 export const RESET_POPULAR = 'reset_popular';
 export const FETCH_CUSTOM = 'fetch_custom';
