@@ -34,7 +34,6 @@ class SearchItem extends React.Component {
 
   postBucketList = () => {
     //add movie/show to bucketlist database using axios post
-    console.log("POSTING ITEM")
     axios({
       method: "post",
       url: "/api/add_item",
@@ -48,8 +47,14 @@ class SearchItem extends React.Component {
   removeFromBucketList = (item) => {
     //item to be deleted is pass through parameter and will be redirected to dashboard
     //after deleting
-    axios.post('/api/delete_item', item)
-      .then(window.location.reload());
+    axios({
+      method: "post",
+      url: '/api/delete_item',
+      headers: {authorization: localStorage.getItem("token")},
+      data: item
+    }).then(window.location.reload());
+    // axios.post('/api/delete_item', item)
+    //   .then(window.location.reload());
   }
 
   //The api has different properties for json data depending on format

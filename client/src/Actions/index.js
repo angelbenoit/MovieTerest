@@ -7,8 +7,10 @@ import { FETCH_USER, AUTH_USER, FETCH_POPULAR,
 const APIKEY = '508d690fdc412430a70ba8b4d841b0e0';
 
 export const fetchUser = () => async (dispatch) => {
-    const res = await axios.get("/api/current_user", {headers: {authorization: localStorage.getItem("token")}});
-    dispatch({type: FETCH_USER, payload: res.data});
+    if(localStorage.getItem("token")){
+        const res = await axios.get("/api/current_user", {headers: {authorization: localStorage.getItem("token")}});
+        dispatch({type: FETCH_USER, payload: res.data});
+    }
 };
 // searchType is what type of search being done, if it is "discover"(intial), then it returns most popular
 // if search Type is "search", a query will be required, which is initially empty.
@@ -79,6 +81,7 @@ export const signup = (formProps, callback) => async dispatch => {
         '/api/signin',
         formProps
       );
+      console.log(formProps)
       //console.log(response.data.token)
       dispatch({ type: AUTH_USER, payload: response.data.token });
       localStorage.setItem('token', response.data.token);

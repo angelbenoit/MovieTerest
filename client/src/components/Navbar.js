@@ -2,6 +2,45 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 class Navbar extends Component {
+    renderLoggedInLinks() {
+        return (
+            <React.Fragment>
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i className="fas fa-film"></i> Search
+                            </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <NavLink className="dropdown-item" to="/search/movie/popular/none">Popular Movies</NavLink>
+                        <NavLink className="dropdown-item" to="/search/tv/popular/none">Popular Television Shows</NavLink>
+                        <NavLink className="dropdown-item" to="/search/movie/genres">Search Movie Genres</NavLink>
+                        <NavLink className="dropdown-item" to="/search/tv/genres">Search Television Show Genres</NavLink>
+                    </div>
+                </li>
+
+                <NavLink className="nav-item nav-link" to="/dashboard" exact>
+                    <i className="fas fa-tachometer-alt"></i> Dashboard
+                </NavLink>
+
+                <NavLink className="nav-item nav-link" to="/" exact onClick={() => localStorage.removeItem("token")}>
+                    <i className="fas fa-sign-out-alt"></i> Logout
+                </NavLink>
+            </React.Fragment>
+        )
+    }
+
+    renderLoggedOffLinks() {
+        return (
+            <React.Fragment>
+                <NavLink className="nav-item nav-link" to="/signup" exact>
+                    <i className="fas fa-sign-out-alt"></i> Sign Up
+                </NavLink>
+                <NavLink className="nav-item nav-link" to="/signin" exact>
+                    <i className="fas fa-sign-out-alt"></i> Sign In
+                </NavLink>
+            </React.Fragment>
+        )
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -15,25 +54,10 @@ class Navbar extends Component {
                             <i className="fas fa-home"></i> Home <span className="sr-only">(current)</span>
                         </NavLink>
 
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i className="fas fa-film"></i> Search
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <NavLink className="dropdown-item" to="/search/movie/popular/none">Popular Movies</NavLink>
-                                <NavLink className="dropdown-item" to="/search/tv/popular/none">Popular Television Shows</NavLink>
-                                <NavLink className="dropdown-item" to="/search/movie/genres">Search Movie Genres</NavLink>
-                                <NavLink className="dropdown-item" to="/search/tv/genres">Search Television Show Genres</NavLink>
-                            </div>
-                        </li>
+                        {
+                            localStorage.getItem("token") ? this.renderLoggedInLinks() : this.renderLoggedOffLinks()
+                        }
 
-                        <NavLink className="nav-item nav-link" to="/dashboard" exact>
-                            <i className="fas fa-tachometer-alt"></i> Dashboard
-                        </NavLink>
-
-                        <a className="nav-item nav-link" href="/api/logout" exact>
-                            <i className="fas fa-sign-out-alt"></i> Logout
-                        </a>
                     </div>
                 </div>
             </nav>
