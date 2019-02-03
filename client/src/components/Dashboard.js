@@ -40,6 +40,7 @@ class Dashboard extends Component {
 
     getUserBucketList() {
         let displayList = [];
+        console.log(this.props.auth)
         if (this.props.auth && this.props.auth.bucketList) {
             displayList = this.props.auth.bucketList.map(item => {
                 let selection;
